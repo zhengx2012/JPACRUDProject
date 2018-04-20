@@ -9,15 +9,17 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider
 		</provider>
 		<!-- add the class setting to so the database knows where to go -->
-		<class>com.skilldistillery.jpacrud.entities.CLASSNAME</class>
+		<class>com.skilldistillery.jpacrud.entities.Restaurants</class>
+		<class>com.skilldistillery.jpacrud.entities.Category</class>
+		<class>com.skilldistillery.jpacrud.entities.Address</class>
 
 		<properties>
 			<!-- change database per project -->
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:mysql://localhost:3306/$CHANGEME" />
-			<property name="javax.persistence.jdbc.user" value="$CHANGEME" />
+				value="jdbc:mysql://localhost:3306/cheapeatsdb" />
+			<property name="javax.persistence.jdbc.user" value="foddieuser@localhost" />
 			<property name="javax.persistence.jdbc.password"
-				value="$CHANGEME" />
+				value="foodie" />
 			<property name="javax.persistence.jdbc.driver"
 				value="com.mysql.jdbc.Driver" />
 			<!-- wil be true when doing junit testing -->
