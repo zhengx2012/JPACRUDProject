@@ -106,7 +106,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cheapeatsdb`;
-INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (1, '(303) 296-6710', '1319 22nd St', 'Denver', 'CO', '80205');
+INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (1, '(303) 296-6710', '1319 22nd St', 'Denver', 'Colorado', '80205');
+INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (2, '(303) 534-0796', '1147 Broadway', 'Denver', 'Colorado', '80203');
+INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (3, '(303) 322-7666', '2641 E 2nd Ave', 'Denver', 'Colorado', '80206');
+INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (4, '(720) 904-5505', '1617 California St', 'Denver', 'Colorado', '80202');
 
 COMMIT;
 
@@ -116,7 +119,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cheapeatsdb`;
-INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (1, 'Lazo Empanadas', 1.50, 5.50, 'lazoEmpanada.jpg', 7, 1);
+INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (1, 'Lazo Empanadas', 1.50, 5.50, 'http://lazoempanadas.com/wp-content/uploads/2015/06/LAZO_Steak-QuesadillaWeb.jpg', 7, 1);
+INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (2, 'Zeps Epiq Sandwiches', 2.00, 12.00, 'https://scontent-ams3-1.cdninstagram.com/vp/34e6e8cbf08d830f97fec1b568342c81/5B214BF6/t51.2885-15/s640x640/sh0.08/e35/26156458_165828794182824_5607107150984773632_n.jpg', 4, 2);
+INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (3, 'Cherry Cricket', 4.00, 12.00, 'https://i.pinimg.com/originals/65/96/0a/65960a4250cbc1f18b2f8d1226652d23.jpg', 4, 3);
+INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (4, 'Five on Black', 5, 6.95, 'https://photos.smugmug.com/Five-on-Black-Review/i-28NtVxg/0/ea135c97/L/FiveonBlack149-L.jpg', 9, 4);
 
 COMMIT;
 

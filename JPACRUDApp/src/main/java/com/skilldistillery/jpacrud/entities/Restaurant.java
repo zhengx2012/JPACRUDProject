@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Restaurant {
@@ -15,25 +16,31 @@ public class Restaurant {
 	private String name;
 
 	@Column(name = "min_price")
-	private int minPrice;
+	private double minPrice;
 
 	@Column(name = "max_price")
-	private int maxPrice;
+	private double maxPrice;
 
 	@Column(name = "category_id")
 	private int categoryId;
 
+	@Transient
+	private Category category;
+
 	@Column(name = "address_id")
 	private int addressId;
-	
-	@Column(name="image_url")
+
+	@Transient
+	private Address address;
+
+	@Column(name = "image_url")
 	private String imageUrl;
 
 	public Restaurant() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Restaurant(String name, int minPrice, int maxPrice, int categoryId, int addressId, String imageUrl) {
+	public Restaurant(String name, double minPrice, double maxPrice, int categoryId, int addressId, String imageUrl) {
 		super();
 		this.name = name;
 		this.minPrice = minPrice;
@@ -51,7 +58,7 @@ public class Restaurant {
 		this.name = name;
 	}
 
-	public int getMinPrice() {
+	public double getMinPrice() {
 		return minPrice;
 	}
 
@@ -59,7 +66,7 @@ public class Restaurant {
 		this.minPrice = minPrice;
 	}
 
-	public int getMaxPrice() {
+	public double getMaxPrice() {
 		return maxPrice;
 	}
 
@@ -93,6 +100,22 @@ public class Restaurant {
 
 	public void setImageUrl(String imageUrl) {
 		this.imageUrl = imageUrl;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	@Override

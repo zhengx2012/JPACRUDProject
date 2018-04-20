@@ -25,27 +25,27 @@ public class EatsController {
 	@Autowired
 	private CategoryDAO cDAO;
 
-	@RequestMapping(path = "index.do", method = RequestMethod.GET)
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView();
-		Restaurant res = rDAO.retrieveById(1);
-		mv.addObject("restaurant", res);
-		Address add = aDAO.retrieveById(res.getAddressId());
-		mv.addObject("address", add);
-		Category cat = cDAO.retrieveCategory(res.getCategoryId());
-		mv.addObject("category", cat);
-		mv.setViewName("WEB-INF/views/index.jsp");
-		return mv;
-
-	}
-
 	// @RequestMapping(path = "index.do", method = RequestMethod.GET)
-	// public ModelAndView show() {
+	// public ModelAndView index() {
 	// ModelAndView mv = new ModelAndView();
-	// List<Restaurant> restaurants = new ArrayList<>();
-	// mv.addObject("restaurants", restaurants);
+	// Restaurant res = rDAO.retrieveById(1);
+	// mv.addObject("restaurant", res);
+	// Address add = aDAO.retrieveById(res.getAddressId());
+	// mv.addObject("address", add);
+	// Category cat = cDAO.retrieveCategory(res.getCategoryId());
+	// mv.addObject("category", cat);
 	// mv.setViewName("WEB-INF/views/index.jsp");
 	// return mv;
 	//
 	// }
+
+	@RequestMapping(path = "index.do", method = RequestMethod.GET)
+	public ModelAndView showAll() {
+		ModelAndView mv = new ModelAndView();
+		List<Restaurant> restaurants = rDAO.retrieveAll();
+		mv.addObject("restaurants", restaurants);
+		mv.setViewName("WEB-INF/views/index.jsp");
+		return mv;
+
+	}
 }
