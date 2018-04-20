@@ -4,12 +4,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<!-- change name per project, referenced by the EntityManagerFactory -->
-	<persistence-unit name="CrudApp">
+	<persistence-unit name="CheapEatsApp">
 		<!-- provider always has to go first -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider
 		</provider>
 		<!-- add the class setting to so the database knows where to go -->
-		<class>com.skilldistillery.jpacrud.entities.Restaurants</class>
+		<class>com.skilldistillery.jpacrud.entities.Restaurant</class>
 		<class>com.skilldistillery.jpacrud.entities.Category</class>
 		<class>com.skilldistillery.jpacrud.entities.Address</class>
 
@@ -17,7 +17,7 @@
 			<!-- change database per project -->
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/cheapeatsdb" />
-			<property name="javax.persistence.jdbc.user" value="foddieuser" />
+			<property name="javax.persistence.jdbc.user" value="foodieuser" />
 			<property name="javax.persistence.jdbc.password"
 				value="foodie" />
 			<property name="javax.persistence.jdbc.driver"

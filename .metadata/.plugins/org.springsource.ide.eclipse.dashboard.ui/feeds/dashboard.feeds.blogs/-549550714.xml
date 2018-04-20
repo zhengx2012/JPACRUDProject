@@ -82,7 +82,7 @@
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
-&lt;p&gt;To use this feature, you’d have to register the 1.1.1.RELEASE version of the Composed Task Runner in SCDF.&lt;/p&gt;
+&lt;p&gt;To use this feature, you’d have to register the &lt;code&gt;1.1.1.BUILD-SNAPSHOT&lt;/code&gt; version of the Composed Task Runner in SCDF.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="paragraph"&gt;
 &lt;p&gt;For Maven users&lt;/p&gt;

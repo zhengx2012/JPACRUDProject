@@ -44,15 +44,15 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `restaurants`
+-- Table `restaurant`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurants` ;
+DROP TABLE IF EXISTS `restaurant` ;
 
-CREATE TABLE IF NOT EXISTS `restaurants` (
+CREATE TABLE IF NOT EXISTS `restaurant` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
-  `min_price` INT UNSIGNED NULL,
-  `max_price` INT UNSIGNED NULL,
+  `min_price` DECIMAL(4,2) UNSIGNED NULL,
+  `max_price` DECIMAL(4,2) UNSIGNED NULL,
   `image_url` VARCHAR(200) NULL,
   `category_id` INT UNSIGNED NOT NULL,
   `address_id` INT NOT NULL,
@@ -106,17 +106,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cheapeatsdb`;
-INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (1, NULL, '1319 22nd St', 'Denver', 'CO', '80205');
+INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (1, '(303) 296-6710', '1319 22nd St', 'Denver', 'CO', '80205');
 
 COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `restaurants`
+-- Data for table `restaurant`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cheapeatsdb`;
-INSERT INTO `restaurants` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (1, 'Lazo Empanadas', NULL, NULL, NULL, 7, 1);
+INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (1, 'Lazo Empanadas', 1.50, 5.50, 'lazoEmpanada.jpg', 7, 1);
 
 COMMIT;
 

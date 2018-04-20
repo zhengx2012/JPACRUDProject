@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Restaurants {
+public class Restaurant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -26,11 +26,11 @@ public class Restaurants {
 	@Column(name = "address_id")
 	private int addressId;
 
-	public Restaurants() {
+	public Restaurant() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Restaurants(String name, int minPrice, int maxPrice, int categoryId, int addressId) {
+	public Restaurant(String name, int minPrice, int maxPrice, int categoryId, int addressId) {
 		super();
 		this.name = name;
 		this.minPrice = minPrice;
@@ -86,9 +86,9 @@ public class Restaurants {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Restaurants [id=").append(id).append(", name=").append(name).append(", minPrice=")
-				.append(minPrice).append(", maxPrice=").append(maxPrice).append(", categoryId=").append(categoryId)
-				.append(", addressId=").append(addressId).append("]");
+		builder.append("Restaurants ").append("\nName:").append(name).append(", Minimum Price: $").append(minPrice)
+				.append(", Minimum Price: $").append(maxPrice).append(", Category ID: ").append(categoryId)
+				.append(", Address ID: ").append(addressId);
 		return builder.toString();
 	}
 

@@ -8,7 +8,11 @@
 </head>
 <body>
 <h1>Welcome to Cheap Eats!</h1>
-<h2>${message }</h2>
 
 </body>
+<h2>${restaurant.name }</h2>
+${restaurant.categoryId }
+${address }
+
+
 </html>

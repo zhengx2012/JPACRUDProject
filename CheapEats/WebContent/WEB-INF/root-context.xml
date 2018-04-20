@@ -11,19 +11,17 @@
 	<context:component-scan
 		base-package="com.skilldistillery.jpacrud.controllers, com.skilldistillery.jpacrud.data"></context:component-scan>
 
-	<bean id="myEntityManagerFactory"
+	<bean id="myEMF"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<property name="persistenceUnitName" value="CrudApp" />
+		<property name="persistenceUnitName" value="CheapEatsApp" />
 	</bean>
 
-	<bean id="myTransactionManager"
+	<bean id="myTM"
 		class="org.springframework.orm.jpa.JpaTransactionManager">
-		<property name="entityManagerFactory"
-			ref="myEntityManagerFactory" />
+		<property name="entityManagerFactory" ref="myEMF" />
 	</bean>
-	
-	<tx:annotation-driven
-		transaction-manager="myTransactionManager" />
+
+	<tx:annotation-driven transaction-manager="myTM" />
 	<mvc:annotation-driven />
 
 </beans>

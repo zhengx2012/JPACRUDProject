@@ -21,7 +21,7 @@ public class Address {
 
 	@Column(name = "zip_code")
 	private String zipCode;
-	
+
 	public Address() {
 		// TODO Auto-generated constructor stub
 	}
@@ -82,12 +82,9 @@ public class Address {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Address [id=").append(id).append(", phoneNumber=").append(phoneNumber).append(", address=")
-				.append(address).append(", city=").append(city).append(", state=").append(state).append(", zipCode=")
-				.append(zipCode).append("]");
+		builder.append("Phone Number: ").append(phoneNumber).append(", Address: ").append(address).append(", City: ")
+				.append(city).append(", State: ").append(state).append(", Zip Code: ").append(zipCode);
 		return builder.toString();
 	}
-	
-	
 
 }
