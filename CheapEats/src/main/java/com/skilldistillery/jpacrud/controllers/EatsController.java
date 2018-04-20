@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpacrud.data.AddressDAO;
-import com.skilldistillery.jpacrud.data.AddressDAOImpl;
+import com.skilldistillery.jpacrud.data.CategoryDAO;
 import com.skilldistillery.jpacrud.data.RestaurantDAO;
-import com.skilldistillery.jpacrud.data.RestaurantDAOImpl;
 import com.skilldistillery.jpacrud.entities.Address;
+import com.skilldistillery.jpacrud.entities.Category;
 import com.skilldistillery.jpacrud.entities.Restaurant;
 
 @Controller
@@ -22,16 +22,18 @@ public class EatsController {
 	private RestaurantDAO rDAO;
 	@Autowired
 	private AddressDAO aDAO;
+	@Autowired
+	private CategoryDAO cDAO;
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
 		Restaurant res = rDAO.retrieveById(1);
-		int addId = res.getAddressId();
-		System.out.println(addId);
 		mv.addObject("restaurant", res);
-		Address add = aDAO.retrieveById(addId);
+		Address add = aDAO.retrieveById(res.getAddressId());
 		mv.addObject("address", add);
+		Category cat = cDAO.retrieveCategory(res.getCategoryId());
+		mv.addObject("category", cat);
 		mv.setViewName("WEB-INF/views/index.jsp");
 		return mv;
 

@@ -1,5 +1,6 @@
 package com.skilldistillery.jpacrud.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,23 +12,23 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String name;
-	
+	@Column(name = "category_name")
+	private String categoryName;
+
 	public Category() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Category(String name) {
 		super();
-		this.name = name;
+		this.categoryName = name;
 	}
 
 	public String getName() {
-		return name;
+		return categoryName;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.categoryName = name;
 	}
 
 	public int getId() {
@@ -37,10 +38,8 @@ public class Category {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Category: ").append(name);
+		builder.append("Category: ").append(categoryName);
 		return builder.toString();
 	}
-	
-	
 
 }
