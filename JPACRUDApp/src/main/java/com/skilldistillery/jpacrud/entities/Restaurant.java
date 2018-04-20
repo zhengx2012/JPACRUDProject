@@ -25,18 +25,22 @@ public class Restaurant {
 
 	@Column(name = "address_id")
 	private int addressId;
+	
+	@Column(name="image_url")
+	private String imageUrl;
 
 	public Restaurant() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Restaurant(String name, int minPrice, int maxPrice, int categoryId, int addressId) {
+	public Restaurant(String name, int minPrice, int maxPrice, int categoryId, int addressId, String imageUrl) {
 		super();
 		this.name = name;
 		this.minPrice = minPrice;
 		this.maxPrice = maxPrice;
 		this.categoryId = categoryId;
 		this.addressId = addressId;
+		this.imageUrl = imageUrl;
 	}
 
 	public String getName() {
@@ -83,12 +87,20 @@ public class Restaurant {
 		return id;
 	}
 
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Restaurants ").append("\nName:").append(name).append(", Minimum Price: $").append(minPrice)
 				.append(", Minimum Price: $").append(maxPrice).append(", Category ID: ").append(categoryId)
-				.append(", Address ID: ").append(addressId);
+				.append(", Address ID: ").append(addressId).append(", Image: ").append(imageUrl);
 		return builder.toString();
 	}
 

@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/stylesheet.css" rel="stylesheet">
 <title>Cheap Eats!</title>
 </head>
 <body>
@@ -11,6 +12,7 @@
 
 </body>
 <h2>${restaurant.name }</h2>
+<img alt="Lazo Empanada" src="${restaurant.imageUrl }">
 <p>${address }</p>
 <p>${category }</p>
 

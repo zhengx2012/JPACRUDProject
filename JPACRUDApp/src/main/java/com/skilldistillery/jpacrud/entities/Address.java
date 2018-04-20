@@ -82,8 +82,8 @@ public class Address {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Phone Number: ").append(phoneNumber).append(", Address: ").append(address).append(", City: ")
-				.append(city).append(", State: ").append(state).append(", Zip Code: ").append(zipCode);
+		builder.append("Phone Number: ").append(phoneNumber).append("\n").append("Address: ").append(address)
+				.append(", ").append(city).append(", ").append(state).append(", ").append(zipCode);
 		return builder.toString();
 	}
 
