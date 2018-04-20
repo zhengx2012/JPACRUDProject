@@ -17,7 +17,7 @@
 			<!-- change database per project -->
 			<property name="javax.persistence.jdbc.url"
 				value="jdbc:mysql://localhost:3306/cheapeatsdb" />
-			<property name="javax.persistence.jdbc.user" value="foddieuser@localhost" />
+			<property name="javax.persistence.jdbc.user" value="foddieuser" />
 			<property name="javax.persistence.jdbc.password"
 				value="foodie" />
 			<property name="javax.persistence.jdbc.driver"
