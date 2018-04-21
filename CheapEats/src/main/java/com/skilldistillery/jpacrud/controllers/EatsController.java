@@ -65,7 +65,7 @@ public class EatsController {
 		return mv;
 	}
 
-	@RequestMapping(path = "/update.do", method = RequestMethod.POST)
+	@RequestMapping(path = "/update.do", method = RequestMethod.GET)
 	public String showUpdatePage() {
 		return "WEB-INF/views/update.jsp";
 
@@ -81,7 +81,7 @@ public class EatsController {
 		return mv;
 	}
 
-	@RequestMapping(path = "/delete.do", method = RequestMethod.POST)
+	@RequestMapping(path = "/delete.do", method = RequestMethod.GET)
 	public String showDeletePage() {
 		return "WEB-INF/views/delete.jsp";
 

@@ -7,7 +7,6 @@
 	crossorigin="anonymous">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/showRStylesheet.css" rel="stylesheet">
+<link href="css/stylesheet.css" rel="stylesheet">
 <title>Cheap Eats!</title>
-<h2>CHEAP EATS </h2>
 </head>

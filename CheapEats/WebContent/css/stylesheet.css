@@ -1,5 +1,24 @@
 @charset "UTF-8";
 
 img {
-	width: 200px;
+	width: 400px;
+}
+
+img.restarant-photo {
+	height: 300px;
+}
+
+.restaurants {
+	float: left;
+	padding: 20px;
+}
+
+
+div.head { 
+	scroll-behavior: inherit;
+	/* position: fixed; */
+	top: 0px;
+	width: 100%;
+	background-color: darkseagreen;
+	text-align: center;
 }

@@ -6,32 +6,45 @@
 <jsp:include page="head.jsp" />
 <body>
 	<jsp:include page="navbar.jsp" />
-	<h2></h2>
+	<h2>Add a new Cheap Eats!</h2>
 
-	<form action="added.do" method="GET">
+	<form action="added.do" method="POST">
 		<div class="form-group">
-			<table>
-				<tr>
-					<td>Restaurant Name:<input type="text" name="name" /></td>
-				</tr>
-				<tr>
-					<td>Minimum price per item:<input type="text" name="minPrice" /></td>
-				</tr>
-				<tr>
-					<td>Maximum price per item:<input type="text" name="maxPrice" /></td>
-				</tr>
-				<tr>
-					<td>Category:<input type="text" name="category" /></td>
-				</tr>
-				<tr>
-					<td>Address:<input type="text" name="address" /></td>
-				</tr>
-				<tr>
-					<td>Image URL:<input type="text" name="imageUrl" /></td>
-				</tr>
-			</table>
-			<input type="submit" value="Add Restaurant">
+			<label for="restaurantName">Restaurant Name</label> <input
+				type="text" class="form-control" name="name" />
 		</div>
+		<div class="form-group">
+			<label for="minItemPrice">Minimum price per item</label> <input
+				type="text" class="form-control" name="minPrice" />
+		</div>
+		<div class="form-group">
+			<label for="mxItemPrice">Maximum price per item</label> <input
+				type="text" class="form-control" name="maxPrice" />
+		</div>
+		<div class="form-group">
+			<label for="restaurantCategory">Category</label> 
+			<select class="form-control" name="category">
+				<option>East Asian</option>
+				<option>Indian</option>
+				<option>Asian Fusion</option>
+				<option>American</option>
+				<option>Soul</option>
+				<option>BBQ</option>
+				<option>Latin</option>
+				<option>Pizzeria</option>
+				<option>Other</option>
+			</select>
+
+		</div>
+		<div class="form-group">
+			<label for="restaurantAddress">Address</label> <input type="text"
+				class="form-control" name="address" />
+		</div>
+		<div class="form-group">
+			<label for="restaurantPhoto">Image URL</label> <input type="text"
+				class="form-control" name="imageUrl" />
+		</div>
+		<button type="submit" class="btn btn-block">Add Restaurant</button>
 	</form>
 
 
