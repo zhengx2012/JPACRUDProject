@@ -3,12 +3,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link href="css/showRStylesheet.css" rel="stylesheet">
-<title>Restaurant Details</title>
-</head>
+	<jsp:include page="head.jsp" />
+
 <body>
+	<jsp:include page="navbar.jsp" />
 	<a href="index.do"><button>Back to Home Page</button></a>
 	<c:if test="${not empty restaurant }">
 		<h2>${restaurant.name }</h2>
@@ -19,5 +17,6 @@
 		<p>${category }</p>
 		<p>${address }</p>
 	</c:if>
+	<jsp:include page="script.jsp" />
 </body>
 </html>
