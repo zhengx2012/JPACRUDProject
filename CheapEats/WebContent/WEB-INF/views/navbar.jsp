@@ -5,7 +5,7 @@
 	<li class="active nav-item"><a class="nav-link" href="index.do">Home</a></li>
 	<li class="nav-item"><a class="nav-link" href="create.do">Create</a></li>
 	<li class="nav-item"><a class="nav-link"
-		href="WEB-INF/views/update.do">Update</a></li>
+		href="update.do">Update</a></li>
 	<li class="nav-item"><a class="nav-link" href="delete.do">Delete</a></li>
 </ul>
 
