@@ -25,19 +25,19 @@ public class EatsController {
 	@Autowired
 	private CategoryDAO cDAO;
 
-	// @RequestMapping(path = "index.do", method = RequestMethod.GET)
-	// public ModelAndView index() {
-	// ModelAndView mv = new ModelAndView();
-	// Restaurant res = rDAO.retrieveById(1);
-	// mv.addObject("restaurant", res);
-	// Address add = aDAO.retrieveById(res.getAddressId());
-	// mv.addObject("address", add);
-	// Category cat = cDAO.retrieveCategory(res.getCategoryId());
-	// mv.addObject("category", cat);
-	// mv.setViewName("WEB-INF/views/index.jsp");
-	// return mv;
-	//
-	// }
+	 @RequestMapping(path = "show.do", params="rid", method = RequestMethod.GET)
+	 public ModelAndView index(int rid) {
+	 ModelAndView mv = new ModelAndView();
+	 Restaurant res = rDAO.retrieveById(rid);
+	 mv.addObject("restaurant", res);
+	 Address add = aDAO.retrieveById(res.getAddressId());
+	 mv.addObject("address", add);
+	 Category cat = cDAO.retrieveCategory(res.getCategoryId());
+	 mv.addObject("category", cat);
+	 mv.setViewName("WEB-INF/views/showRestaurant.jsp");
+	 return mv;
+	
+	 }
 
 	@RequestMapping(path = "index.do", method = RequestMethod.GET)
 	public ModelAndView showAll() {

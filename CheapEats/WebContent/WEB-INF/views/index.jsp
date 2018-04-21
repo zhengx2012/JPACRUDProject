@@ -12,22 +12,19 @@
 	<h1>Welcome to Cheap Eats!</h1>
 
 </body>
-<%-- <h2>${restaurant.name }</h2>
-<img alt="Lazo Empanada" src="${restaurant.imageUrl }">
-<p>${address }</p>
-<p>${category }</p> --%>
-
-<!-- <a href="showAll.jsp" class ="button" value="show.do">List all restaurants</a> -->
+<form action="show.do" method="GET">
+	<input type="text" name="rid" /> 
+	<input type="submit" value="Find Restaurant" />
+</form>
 
 <c:if test="${empty restaurants }">No restaurants in database</c:if>
 <c:forEach var="r" items="${restaurants}">
-	<h3>${r.name }</h3>
-	<img alt="Restaurant Food Photos" src="${r.imageUrl }">
-	<p>Minimum price per item: $ ${r.minPrice }</p>
-	<p>Maximum price per item: $ ${r.maxPrice }</p>
-	<p>${r.category }</p>
-	<p>${r.address }</p>
-	<%-- <p>${r.address }</p> --%>
+	<h3>
+		<a href="show.do?rid=${r.id }"> ${r.name } </a>
+	</h3>
+
+	<img alt="${r.name } Food Photo" src="${r.imageUrl }">
+	
 </c:forEach>
 
 </body>
