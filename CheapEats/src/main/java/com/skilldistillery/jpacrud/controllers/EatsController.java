@@ -48,19 +48,19 @@ public class EatsController {
 
 	}
 
-	@RequestMapping(path = "/create.do", method = RequestMethod.GET)
+	@RequestMapping(path = "/create.do", method = RequestMethod.POST)
 	public String showCreatePage() {
 		return "WEB-INF/views/create.jsp";
 
 	}
 
-	@RequestMapping(path = "/update.do", method = RequestMethod.GET)
+	@RequestMapping(path = "/update.do", method = RequestMethod.POST)
 	public String showUpdatePage() {
 		return "WEB-INF/views/update.jsp";
 
 	}
 
-	@RequestMapping(path = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(path = "/delete.do", method = RequestMethod.POST)
 	public String showDeletePage() {
 		return "WEB-INF/views/delete.jsp";
 
