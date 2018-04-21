@@ -21,6 +21,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public Restaurant create(Restaurant restaurant) {
+		String query ="INSERT INTO Restaurant ("
 
 		return null;
 	}

@@ -12,6 +12,7 @@
 	<h1>Welcome to Cheap Eats!</h1>
 
 </body>
+
 <form action="show.do" method="GET">
 	<input type="text" name="rid" /> 
 	<input type="submit" value="Find Restaurant" />

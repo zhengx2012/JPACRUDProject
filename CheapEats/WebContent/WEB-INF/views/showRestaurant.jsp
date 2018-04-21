@@ -9,8 +9,9 @@
 <title>Restaurant Details</title>
 </head>
 <body>
+	<a href="index.do"><button>Back to Home Page</button></a>
 	<c:if test="${not empty restaurant }">
-		<h3>${restaurant.name }</h3>
+		<h2>${restaurant.name }</h2>
 		<img alt="${restaurant.name } Food Photo"
 			src="${restaurant.imageUrl }">
 		<p>Minimum price per item: $ ${restaurant.minPrice }</p>
