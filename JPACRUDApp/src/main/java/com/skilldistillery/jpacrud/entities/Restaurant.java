@@ -53,6 +53,17 @@ public class Restaurant {
 		this.imageUrl = imageUrl;
 	}
 
+	public Restaurant(String name, double minPrice, double maxPrice, Category category, Address address,
+			String imageUrl) {
+		super();
+		this.name = name;
+		this.minPrice = minPrice;
+		this.maxPrice = maxPrice;
+		this.category = category;
+		this.address = address;
+		this.imageUrl = imageUrl;
+	}
+
 	public String getName() {
 		return name;
 	}

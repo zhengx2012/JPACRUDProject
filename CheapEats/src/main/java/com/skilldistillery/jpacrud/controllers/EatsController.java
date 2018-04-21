@@ -48,10 +48,21 @@ public class EatsController {
 
 	}
 
-	@RequestMapping(path = "/create.do", method = RequestMethod.POST)
+	@RequestMapping(path = "/create.do", method = RequestMethod.GET)
 	public String showCreatePage() {
 		return "WEB-INF/views/create.jsp";
 
+	}
+
+	@RequestMapping(path = "/added.do", method = RequestMethod.POST)
+	public ModelAndView addRestaurant(String name, double minPrice, double maxPrice, Category category, Address address,
+			String imageUrl) {
+		ModelAndView mv = new ModelAndView();
+		Restaurant rest = new Restaurant(name, minPrice, maxPrice, category, address, imageUrl);
+		Restaurant createdRest = rDAO.create(rest);
+		mv.addObject("restaurant", createdRest);
+		mv.setViewName("redirect:WEB-INF/views/showRestaurant.jsp");
+		return mv;
 	}
 
 	@RequestMapping(path = "/update.do", method = RequestMethod.POST)
@@ -60,20 +71,20 @@ public class EatsController {
 
 	}
 
+	@RequestMapping(path = "/updated.do", method = RequestMethod.GET)
+	public ModelAndView updateRestaurant(String name, double minPrice, double maxPrice, Category category,
+			Address address, String imageUrl) {
+		ModelAndView mv = new ModelAndView();
+		Restaurant createdRest = new Restaurant(name, minPrice, maxPrice, category, address, imageUrl);
+		mv.addObject("restaurant", createdRest);
+		mv.setViewName("redirect:WEB-INF/views/showRestaurant.jsp");
+		return mv;
+	}
+
 	@RequestMapping(path = "/delete.do", method = RequestMethod.POST)
 	public String showDeletePage() {
 		return "WEB-INF/views/delete.jsp";
 
-	}
-
-	public ModelAndView create(String name, double minPrice, double maxPrice, int categoryId, Category category,
-			int addressId, Address address, String imageUrl) {
-		ModelAndView mv = new ModelAndView();
-		Restaurant createdRest = new Restaurant(name, minPrice, maxPrice, categoryId, category, addressId, address,
-				imageUrl);
-		mv.addObject("restaurant", createdRest);
-		mv.setViewName("redirect:WEB-INF/views/created.jsp");
-		return mv;
 	}
 
 }
