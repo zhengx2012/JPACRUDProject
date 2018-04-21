@@ -1,6 +1,5 @@
 package com.skilldistillery.jpacrud.controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +46,15 @@ public class EatsController {
 		mv.setViewName("WEB-INF/views/index.jsp");
 		return mv;
 
+	}
+	
+	public ModelAndView create(String name, double minPrice, double maxPrice, int categoryId, Category category, int addressId,
+			Address address, String imageUrl){
+		ModelAndView mv = new ModelAndView();
+		Restaurant createdRest = new Restaurant(name, minPrice, maxPrice, categoryId, category, addressId, address, imageUrl);
+		mv.addObject("restaurant", createdRest);
+		mv.setViewName("redirect:WEB-INF/views/created.jsp");
+		return mv;
 	}
 	
 }

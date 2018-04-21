@@ -21,8 +21,17 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public Restaurant create(Restaurant restaurant) {
+		Restaurant rest = new Restaurant();
+		rest.setName(restaurant.getName());
+		rest.setImageUrl(restaurant.getImageUrl());
+		rest.setMinPrice(restaurant.getMinPrice());
+		rest.setMaxPrice(restaurant.getMaxPrice());
+		rest.setAddress(restaurant.getAddress());
+		rest.setCategory(restaurant.getCategory());
+		em.persist(restaurant);
+		em.flush();
 
-		return null;
+		return rest;
 	}
 
 	@Override
@@ -46,8 +55,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		try {
 			em.remove(rest);
 			deleted = true;
-		}
-		catch(IllegalArgumentException iae) {
+		} catch (IllegalArgumentException iae) {
 			em.getTransaction().rollback();
 		}
 		return deleted;

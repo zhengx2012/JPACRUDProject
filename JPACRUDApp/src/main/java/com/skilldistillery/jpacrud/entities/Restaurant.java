@@ -40,13 +40,16 @@ public class Restaurant {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Restaurant(String name, double minPrice, double maxPrice, int categoryId, int addressId, String imageUrl) {
+	public Restaurant(String name, double minPrice, double maxPrice, int categoryId, Category category, int addressId,
+			Address address, String imageUrl) {
 		super();
 		this.name = name;
 		this.minPrice = minPrice;
 		this.maxPrice = maxPrice;
 		this.categoryId = categoryId;
+		this.category = category;
 		this.addressId = addressId;
+		this.address = address;
 		this.imageUrl = imageUrl;
 	}
 
