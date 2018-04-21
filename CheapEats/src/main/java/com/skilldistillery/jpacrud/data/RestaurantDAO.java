@@ -8,7 +8,7 @@ public interface RestaurantDAO {
 	Restaurant create(Restaurant restaurant);
 	Restaurant retrieveById(int id);
 	List<Restaurant> retrieveAll();
-	Restaurant update(int id);
-	Restaurant delete(int id);
+	Restaurant update(Restaurant restaurant, int id);
+	boolean delete(int id);
 	
 }

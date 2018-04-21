@@ -21,21 +21,36 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public Restaurant create(Restaurant restaurant) {
-		String query ="INSERT INTO Restaurant ("
 
 		return null;
 	}
 
 	@Override
-	public Restaurant update(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Restaurant update(Restaurant restaurant, int id) {
+		Restaurant updatedRest = em.find(Restaurant.class, id);
+		updatedRest.setName(restaurant.getName());
+		updatedRest.setImageUrl(restaurant.getImageUrl());
+		updatedRest.setMinPrice(restaurant.getMinPrice());
+		updatedRest.setMaxPrice(restaurant.getMaxPrice());
+		updatedRest.setAddress(restaurant.getAddress());
+		updatedRest.setCategory(restaurant.getCategory());
+		em.persist(updatedRest);
+		em.flush();
+		return updatedRest;
 	}
 
 	@Override
-	public Restaurant delete(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean delete(int id) {
+		Restaurant rest = em.find(Restaurant.class, id);
+		boolean deleted = false;
+		try {
+			em.remove(rest);
+			deleted = true;
+		}
+		catch(IllegalArgumentException iae) {
+			em.getTransaction().rollback();
+		}
+		return deleted;
 	}
 
 	@Override

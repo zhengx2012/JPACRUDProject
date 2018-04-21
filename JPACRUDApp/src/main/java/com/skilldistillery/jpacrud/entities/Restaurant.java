@@ -62,15 +62,15 @@ public class Restaurant {
 		return minPrice;
 	}
 
-	public void setMinPrice(int minPrice) {
-		this.minPrice = minPrice;
+	public void setMinPrice(double d) {
+		this.minPrice = d;
 	}
 
 	public double getMaxPrice() {
 		return maxPrice;
 	}
 
-	public void setMaxPrice(int maxPrice) {
+	public void setMaxPrice(double maxPrice) {
 		this.maxPrice = maxPrice;
 	}
 
