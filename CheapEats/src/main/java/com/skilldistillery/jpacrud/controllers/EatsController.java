@@ -24,21 +24,21 @@ public class EatsController {
 	@Autowired
 	private CategoryDAO cDAO;
 
-	 @RequestMapping(path = "show.do", params="rid", method = RequestMethod.GET)
-	 public ModelAndView index(int rid) {
-	 ModelAndView mv = new ModelAndView();
-	 Restaurant res = rDAO.retrieveById(rid);
-	 mv.addObject("restaurant", res);
-	 Address add = aDAO.retrieveById(res.getAddressId());
-	 mv.addObject("address", add);
-	 Category cat = cDAO.retrieveCategory(res.getCategoryId());
-	 mv.addObject("category", cat);
-	 mv.setViewName("WEB-INF/views/showRestaurant.jsp");
-	 return mv;
-	
-	 }
+	@RequestMapping(path = "/show.do", params = "rid", method = RequestMethod.GET)
+	public ModelAndView index(int rid) {
+		ModelAndView mv = new ModelAndView();
+		Restaurant res = rDAO.retrieveById(rid);
+		mv.addObject("restaurant", res);
+		Address add = aDAO.retrieveById(res.getAddressId());
+		mv.addObject("address", add);
+		Category cat = cDAO.retrieveCategory(res.getCategoryId());
+		mv.addObject("category", cat);
+		mv.setViewName("WEB-INF/views/showRestaurant.jsp");
+		return mv;
 
-	@RequestMapping(path = "index.do", method = RequestMethod.GET)
+	}
+
+	@RequestMapping(path = "/index.do", method = RequestMethod.GET)
 	public ModelAndView showAll() {
 		ModelAndView mv = new ModelAndView();
 		List<Restaurant> restaurants = rDAO.retrieveAll();
@@ -47,14 +47,33 @@ public class EatsController {
 		return mv;
 
 	}
-	
-	public ModelAndView create(String name, double minPrice, double maxPrice, int categoryId, Category category, int addressId,
-			Address address, String imageUrl){
+
+	@RequestMapping(path = "/create.do", method = RequestMethod.PUT)
+	public String showCreatePage() {
+		return "WEB-INF/views/create.jsp";
+
+	}
+
+	@RequestMapping(path = "update.do", method = RequestMethod.PUT)
+	public String showUpdatePage() {
+		return "WEB-INF/views/update.jsp";
+
+	}
+
+	@RequestMapping(path = "delete.do", method = RequestMethod.PUT)
+	public String showDeletePage() {
+		return "WEB-INF/views/delete.jsp";
+
+	}
+
+	public ModelAndView create(String name, double minPrice, double maxPrice, int categoryId, Category category,
+			int addressId, Address address, String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant createdRest = new Restaurant(name, minPrice, maxPrice, categoryId, category, addressId, address, imageUrl);
+		Restaurant createdRest = new Restaurant(name, minPrice, maxPrice, categoryId, category, addressId, address,
+				imageUrl);
 		mv.addObject("restaurant", createdRest);
 		mv.setViewName("redirect:WEB-INF/views/created.jsp");
 		return mv;
 	}
-	
+
 }
