@@ -12,6 +12,7 @@
 		<h2>${restaurant.name }</h2>
 		<img alt="${restaurant.name } Food Photo"
 			src="${restaurant.imageUrl }">
+			<p>Phone Number: ${restaurant.phoneNumber }</p>
 		<p>Minimum price per item: $ ${restaurant.minPrice }</p>
 		<p>Maximum price per item: $ ${restaurant.maxPrice }</p>
 		<p>${category }</p>

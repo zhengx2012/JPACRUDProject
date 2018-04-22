@@ -34,7 +34,6 @@ DROP TABLE IF EXISTS `address` ;
 
 CREATE TABLE IF NOT EXISTS `address` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `phone_number` VARCHAR(15) NULL,
   `address` VARCHAR(45) NULL,
   `city` VARCHAR(45) NULL,
   `state` VARCHAR(45) NULL,
@@ -51,14 +50,16 @@ DROP TABLE IF EXISTS `restaurant` ;
 CREATE TABLE IF NOT EXISTS `restaurant` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
+  `phone_number` VARCHAR(15) NULL,
   `min_price` DECIMAL(4,2) UNSIGNED NULL,
   `max_price` DECIMAL(4,2) UNSIGNED NULL,
   `image_url` VARCHAR(200) NULL,
   `category_id` INT UNSIGNED NOT NULL,
-  `address_id` INT NOT NULL,
+  `address_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_category_id_idx` (`category_id` ASC),
   INDEX `fk_address_id_address_idx` (`address_id` ASC),
+  UNIQUE INDEX `address_id_UNIQUE` (`address_id` ASC),
   CONSTRAINT `fk_category_id_category`
     FOREIGN KEY (`category_id`)
     REFERENCES `category` (`id`)
@@ -106,10 +107,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cheapeatsdb`;
-INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (1, '(303) 296-6710', '1319 22nd St', 'Denver', 'Colorado', '80205');
-INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (2, '(303) 534-0796', '1147 Broadway', 'Denver', 'Colorado', '80203');
-INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (3, '(303) 322-7666', '2641 E 2nd Ave', 'Denver', 'Colorado', '80206');
-INSERT INTO `address` (`id`, `phone_number`, `address`, `city`, `state`, `zip_code`) VALUES (4, '(720) 904-5505', '1617 California St', 'Denver', 'Colorado', '80202');
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `zip_code`) VALUES (1, '1319 22nd St', 'Denver', 'Colorado', '80205');
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `zip_code`) VALUES (2, '1147 Broadway', 'Denver', 'Colorado', '80203');
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `zip_code`) VALUES (3, '2641 E 2nd Ave', 'Denver', 'Colorado', '80206');
+INSERT INTO `address` (`id`, `address`, `city`, `state`, `zip_code`) VALUES (4, '1617 California St', 'Denver', 'Colorado', '80202');
 
 COMMIT;
 
@@ -119,10 +120,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `cheapeatsdb`;
-INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (1, 'Lazo Empanadas', 1.50, 5.50, 'http://lazoempanadas.com/wp-content/uploads/2015/06/LAZO_Steak-QuesadillaWeb.jpg', 7, 1);
-INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (2, 'Zeps Epiq Sandwiches', 2.00, 12.00, 'https://scontent-ams3-1.cdninstagram.com/vp/34e6e8cbf08d830f97fec1b568342c81/5B214BF6/t51.2885-15/s640x640/sh0.08/e35/26156458_165828794182824_5607107150984773632_n.jpg', 4, 2);
-INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (3, 'Cherry Cricket', 4.00, 12.00, 'https://i.pinimg.com/originals/65/96/0a/65960a4250cbc1f18b2f8d1226652d23.jpg', 4, 3);
-INSERT INTO `restaurant` (`id`, `name`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (4, 'Five on Black', 5, 6.95, 'https://photos.smugmug.com/Five-on-Black-Review/i-28NtVxg/0/ea135c97/L/FiveonBlack149-L.jpg', 9, 4);
+INSERT INTO `restaurant` (`id`, `name`, `phone_number`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (1, 'Lazo Empanadas', '(303) 296-6710', 1.50, 5.50, 'http://lazoempanadas.com/wp-content/uploads/2015/06/LAZO_Steak-QuesadillaWeb.jpg', 7, 1);
+INSERT INTO `restaurant` (`id`, `name`, `phone_number`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (2, 'Zeps Epiq Sandwiches', '(303) 534-0796', 2.00, 12.00, 'https://scontent-ams3-1.cdninstagram.com/vp/34e6e8cbf08d830f97fec1b568342c81/5B214BF6/t51.2885-15/s640x640/sh0.08/e35/26156458_165828794182824_5607107150984773632_n.jpg', 4, 2);
+INSERT INTO `restaurant` (`id`, `name`, `phone_number`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (3, 'Cherry Cricket', '(303) 322-7666', 4.00, 12.00, 'https://i.pinimg.com/originals/65/96/0a/65960a4250cbc1f18b2f8d1226652d23.jpg', 4, 3);
+INSERT INTO `restaurant` (`id`, `name`, `phone_number`, `min_price`, `max_price`, `image_url`, `category_id`, `address_id`) VALUES (4, 'Five on Black', '(720) 904-5505', 5, 6.95, 'https://photos.smugmug.com/Five-on-Black-Review/i-28NtVxg/0/ea135c97/L/FiveonBlack149-L.jpg', 9, 4);
 
 COMMIT;
 

@@ -15,6 +15,9 @@ public class Restaurant {
 
 	private String name;
 
+	@Column(name = "phone_number")
+	private String phoneNumber;
+
 	@Column(name = "min_price")
 	private double minPrice;
 
@@ -28,7 +31,7 @@ public class Restaurant {
 	private Category category;
 
 	@Column(name = "address_id")
-	private int addressId;
+	private Integer addressId;
 
 	@Transient
 	private Address address;
@@ -40,16 +43,14 @@ public class Restaurant {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Restaurant(String name, double minPrice, double maxPrice, int categoryId, Category category, int addressId,
-			Address address, String imageUrl) {
+	public Restaurant(String name, String phoneNumber, double minPrice, double maxPrice, int categoryId,
+			String imageUrl) {
 		super();
 		this.name = name;
+		this.phoneNumber = phoneNumber;
 		this.minPrice = minPrice;
 		this.maxPrice = maxPrice;
 		this.categoryId = categoryId;
-		this.category = category;
-		this.addressId = addressId;
-		this.address = address;
 		this.imageUrl = imageUrl;
 	}
 
@@ -64,12 +65,28 @@ public class Restaurant {
 		this.imageUrl = imageUrl;
 	}
 
+	public Restaurant(String name, double minPrice, double maxPrice, String imageUrl) {
+		super();
+		this.name = name;
+		this.minPrice = minPrice;
+		this.maxPrice = maxPrice;
+		this.imageUrl = imageUrl;
+	}
+
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public double getMinPrice() {
@@ -100,7 +117,7 @@ public class Restaurant {
 		return addressId;
 	}
 
-	public void setAddressId(int addressId) {
+	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
 
@@ -135,9 +152,10 @@ public class Restaurant {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Restaurants ").append("\nName:").append(name).append(", Minimum Price: $").append(minPrice)
-				.append(", Minimum Price: $").append(maxPrice).append(", Category ID: ").append(categoryId)
-				.append(", Address ID: ").append(addressId).append(", Image: ").append(imageUrl);
+		builder.append("Restaurants ").append("\nName:").append(name).append("Phone Number: ").append(phoneNumber)
+				.append(", Minimum Price: $").append(minPrice).append(", Minimum Price: $").append(maxPrice)
+				.append(", Category ID: ").append(categoryId).append(", Address ID: ").append(addressId)
+				.append(", Image: ").append(imageUrl);
 		return builder.toString();
 	}
 

@@ -11,10 +11,6 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@Column(name = "phone_number")
-	private String phoneNumber;
-
 	private String address;
 	private String city;
 	private String state;
@@ -28,19 +24,10 @@ public class Address {
 
 	public Address(String phoneNumber, String address, String city, String state, String zipCode) {
 		super();
-		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
 	}
 
 	public String getAddress() {
@@ -82,8 +69,8 @@ public class Address {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Phone Number: ").append(phoneNumber).append("\n").append("Address: ").append(address)
-				.append(", ").append(city).append(", ").append(state).append(", ").append(zipCode);
+		builder.append("Address: ").append(address).append(", ").append(city).append(", ").append(state).append(", ")
+				.append(zipCode);
 		return builder.toString();
 	}
 

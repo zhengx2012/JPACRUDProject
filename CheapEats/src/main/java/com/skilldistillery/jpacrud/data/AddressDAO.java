@@ -4,5 +4,6 @@ import com.skilldistillery.jpacrud.entities.Address;
 
 public interface AddressDAO {
 	Address retrieveById(int id);
+	Address setById(int id);
 
 }

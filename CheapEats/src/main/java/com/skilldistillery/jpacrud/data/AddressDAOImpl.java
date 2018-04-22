@@ -20,4 +20,11 @@ public class AddressDAOImpl implements AddressDAO {
 		return add;
 	}
 
+	@Override
+	public Address setById(int id) {
+//		String query = "INSERT INTO a (address, "
+//		Address address = em.createQuery(query, Address.class).setParameter(position, value)
+		return null;
+	}
+
 }

@@ -54,14 +54,21 @@ public class EatsController {
 
 	}
 
-	@RequestMapping(path = "/added.do", method = RequestMethod.POST)
-	public ModelAndView addRestaurant(String name, double minPrice, double maxPrice, Category category, Address address,
+	@RequestMapping(path = "/add.do", method = RequestMethod.POST)
+	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
+			int categoryId, /* Category category, Address address, */
 			String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant rest = new Restaurant(name, minPrice, maxPrice, category, address, imageUrl);
+		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, imageUrl);
 		Restaurant createdRest = rDAO.create(rest);
-		mv.addObject("restaurant", createdRest);
-		mv.setViewName("redirect:WEB-INF/views/showRestaurant.jsp");
+		if (createdRest == rest) {
+			mv.addObject("restaurant", createdRest);
+			mv.setViewName("redirect:success.do");
+		}
+		else {
+			mv.setViewName("redirect:failure.do");
+		}
+		
 		return mv;
 	}
 
@@ -84,6 +91,17 @@ public class EatsController {
 	@RequestMapping(path = "/delete.do", method = RequestMethod.GET)
 	public String showDeletePage() {
 		return "WEB-INF/views/delete.jsp";
+
+	}
+	@RequestMapping(path = "/success.do", method = RequestMethod.GET)
+	public String showSuccessPage() {
+		return "WEB-INF/views/restaurantModifySuccess.jsp";
+		
+	}
+
+	@RequestMapping(path = "/failure.do", method = RequestMethod.GET)
+	public String showFailurePage() {
+		return "WEB-INF/views/restaurantModifySuccess.jsp";
 
 	}
 
