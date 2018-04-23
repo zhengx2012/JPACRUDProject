@@ -17,7 +17,7 @@
 					<a href="show.do?rid=${r.id }"> ${r.name } </a>
 				</h3>
 
-				<img class="restarant-photo" alt="${r.name } Food Photo"
+				<img class="restaurant-photo" alt="${r.name } Food Photo"
 					src="${r.imageUrl }">
 			</div>
 		</c:forEach>

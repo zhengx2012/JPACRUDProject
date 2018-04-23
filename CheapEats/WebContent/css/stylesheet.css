@@ -1,9 +1,14 @@
 @charset "UTF-8";
 
 
-img.restarant-photo {
+img.restaurant-photo {
 	height: 300px;
 	width: 400px;
+}
+
+img.restaurant-photo-lg {
+	height: 400px;
+	width: 500px;
 }
 
 .restaurants {

@@ -12,16 +12,17 @@
 			<div class="form-group">
 				<label for="restaurantName">Restaurant Name</label> <input
 					type="text" class="form-control" name="name"
-					value="Restaurant Name" />
+					value="Restaurant Name" required/>
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber">Restaurant Phone Number</label> <input
 					type="text" class="form-control" name=" phoneNumber"
-					value="(720) 123-4567">
+					value="(720) 123-4567" required />
 			</div>
 			<div class="form-group">
 				<label for="address">Address</label> <input type="text"
-					class="form-control" name="address" value="123 N Colorado St" />
+					class="form-control" name="address" value="123 N Colorado St"
+					required />
 			</div>
 			<div class="form-group">
 				<label for="address2">Suite/Floor </label> <input type="text"
@@ -29,16 +30,16 @@
 			</div>
 			<div class="form-row">
 				<div class="col-7">
-					<input type="text" class="form-control" name="city"
-						value="City">
+					<input type="text" class="form-control" name="city" value="City"
+						required>
 				</div>
 				<div class="col">
-					<input type="text" class="form-control" name="state"
-						value="State">
+					<input type="text" class="form-control" name="state" value="State"
+						required>
 				</div>
 				<div class="col">
-					<input type="text" class="form-control" name="zipCode"
-						value="Zip">
+					<input type="text" class="form-control" name="zipCode" value="Zip"
+						required>
 				</div>
 			</div>
 			<div class="form-group">
@@ -47,8 +48,7 @@
 			</div>
 			<div class="form-group">
 				<label for="mxItemPrice">Maximum price per item</label> <input
-					type="text" class="form-control" name="maxPrice"
-					value="10.00" />
+					type="text" class="form-control" name="maxPrice" value="10.00" />
 			</div>
 			<!-- <div class="form-group">
 			<label for="restaurantCategory">Category</label> 

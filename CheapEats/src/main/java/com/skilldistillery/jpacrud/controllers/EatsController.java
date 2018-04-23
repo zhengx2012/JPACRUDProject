@@ -28,6 +28,7 @@ public class EatsController {
 	@RequestMapping(path = "/show.do", params = "rid", method = RequestMethod.GET)
 	public ModelAndView index(int rid) {
 		ModelAndView mv = new ModelAndView();
+		
 		Restaurant restaurant = rDAO.retrieveById(rid);
 		mv.addObject("restaurant", restaurant);
 		Category category = cDAO.retrieveCategory(restaurant.getCategoryId());

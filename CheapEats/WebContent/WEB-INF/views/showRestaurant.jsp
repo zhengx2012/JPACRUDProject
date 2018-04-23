@@ -9,8 +9,9 @@
 	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<c:if test="${not empty restaurant }">
+		<h2 class="header">Restaurant Details</h2>
 			<h2>${restaurant.name }</h2>
-			<img alt="${restaurant.name } Food Photo"
+			<img class="restaurant-photo-lg" alt="${restaurant.name } Food Photo"
 				src="${restaurant.imageUrl }">
 			<p>Restaurant ID: ${restaurant.id }</p>
 			<p>Phone Number: ${restaurant.phoneNumber }</p>
@@ -34,6 +35,7 @@
 				<button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this restaurant?')">Delete</button>
 			</form>
 		</div>
+		<c:if test="${empty restaurant.id }">No Restaurants Found</c:if>
 	</div>
 	<jsp:include page="script.jsp" />
 </body>
