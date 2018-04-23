@@ -98,13 +98,14 @@ public class EatsController {
 		return "WEB-INF/views/delete.jsp";
 
 	}
+
 	@RequestMapping(path = "/delete.do", params = "id", method = RequestMethod.GET)
 	public ModelAndView deleteRestaurant(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView();
 		rDAO.delete(id);
 		mv.setViewName("redirect:deleted.do");
 		return mv;
-		
+
 	}
 
 	@RequestMapping(path = "/success.do", method = RequestMethod.GET)
@@ -117,6 +118,11 @@ public class EatsController {
 	public String showFailurePage() {
 		return "WEB-INF/views/restaurantModifySuccess.jsp";
 
+	}
+
+	@RequestMapping(path = "*", method = RequestMethod.GET)
+	public String fallback() {
+		return "WEB-INF/views/fallback.jsp";
 	}
 
 }

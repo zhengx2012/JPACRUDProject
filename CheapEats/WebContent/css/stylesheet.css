@@ -1,16 +1,14 @@
 @charset "UTF-8";
 
-img {
-	width: 400px;
-}
 
 img.restarant-photo {
 	height: 300px;
+	width: 400px;
 }
 
 .restaurants {
 	float: left;
-	padding: 20px;
+	padding: 10px;
 }
 
 div.head {

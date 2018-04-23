@@ -22,9 +22,16 @@
 	</c:if>
 	<div class="form-group">
 		<form action="delete.do">
-			<label>Type the restaurant ID you would like to delete</label> <input
-				type="text" name="id" />
+			<label>Input the ID of the restaurant you would like to
+				delete</label> <input type="text" name="id" />
 			<button type="submit" class="btn btn-outline-danger">Delete</button>
+		</form>
+	</div>
+	<div class="form-group">
+		<form action="delete.do">
+			<label>Input the ID of the restaurant you would like to
+				update</label> <input type="text" name="id" />
+			<button type="submit" class="btn btn-outline-primary">Update</button>
 		</form>
 	</div>
 	<jsp:include page="script.jsp" />

@@ -7,11 +7,9 @@
 <body>
 
 	<jsp:include page="navbar.jsp" />
-	<form action="show.do" method="GET">
-		<input type="text" name="rid" /> <input type="submit"
-			value="Find Restaurant" />
-	</form>
+	
 	<div class="container">
+	<h2 class="header">Full List of Restaurants</h2>
 	<c:if test="${empty restaurants }">No restaurants in database</c:if>
 	<c:forEach var="r" items="${restaurants}">
 		<div class="restaurants">

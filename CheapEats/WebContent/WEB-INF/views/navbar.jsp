@@ -7,6 +7,10 @@
 		<li class="nav-item"><a class="nav-link" href="create.do">Create</a></li>
 		<!--<li class="nav-item"><a class="nav-link" href="update.do">Update</a></li>  -->
 		<!-- <li class="nav-item"><a class="nav-link" href="delete.do">Delete</a></li> -->
+		<form action="show.do" method="GET">
+			<input type="text" name="rid" /> <input type="submit"
+				value="Find Restaurant By ID" />
+		</form>
 	</ul>
 </div>
 
