@@ -5,32 +5,78 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema cheapeats
+-- Schema mydb
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `cheapeats` ;
+-- -----------------------------------------------------
+-- Schema cheapeatsdb
+-- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `cheapeatsdb` ;
 
 -- -----------------------------------------------------
--- Schema cheapeats
+-- Schema cheapeatsdb
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `cheapeats` DEFAULT CHARACTER SET utf8 ;
-USE `cheapeats` ;
+CREATE SCHEMA IF NOT EXISTS `cheapeatsdb` DEFAULT CHARACTER SET utf8 ;
+USE `cheapeatsdb` ;
 
 -- -----------------------------------------------------
--- Table `restaurants`
+-- Table `address`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurants` ;
+DROP TABLE IF EXISTS `address` ;
 
-CREATE TABLE IF NOT EXISTS `restaurants` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NULL,
-  `phone_number` VARCHAR(12) NULL,
-  `address` VARCHAR(45) NULL,
-  `zip_code` VARCHAR(12) NULL,
-  `min_price` INT UNSIGNED NULL,
-  `max_price` INT UNSIGNED NULL,
-  `image_url` VARCHAR(200) NULL,
+CREATE TABLE IF NOT EXISTS `address` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `address` VARCHAR(45) NULL DEFAULT NULL,
+  `city` VARCHAR(45) NULL DEFAULT NULL,
+  `state` VARCHAR(45) NULL DEFAULT NULL,
+  `zip_code` VARCHAR(12) NULL DEFAULT NULL,
   PRIMARY KEY (`id`))
-ENGINE = InnoDB;
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `category`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `category` ;
+
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `category_name` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `restaurant`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `restaurant` ;
+
+CREATE TABLE IF NOT EXISTS `restaurant` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL DEFAULT NULL,
+  `phone_number` VARCHAR(15) NULL DEFAULT NULL,
+  `min_price` DECIMAL(4,2) UNSIGNED NULL DEFAULT NULL,
+  `max_price` DECIMAL(4,2) UNSIGNED NULL DEFAULT NULL,
+  `image_url` VARCHAR(200) NULL DEFAULT NULL,
+  `category_id` INT(10) UNSIGNED NOT NULL,
+  `address` VARCHAR(60) NOT NULL,
+  `address2` VARCHAR(45) NULL DEFAULT NULL,
+  `city` VARCHAR(45) NOT NULL,
+  `state` VARCHAR(45) NOT NULL,
+  `zip_code` VARCHAR(12) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_category_id_idx` (`category_id` ASC),
+  CONSTRAINT `fk_category_id_category`
+    FOREIGN KEY (`category_id`)
+    REFERENCES `category` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+AUTO_INCREMENT = 10
+DEFAULT CHARACTER SET = utf8;
 
 SET SQL_MODE = '';
 GRANT USAGE ON *.* TO foodieuser@localhost;
@@ -38,6 +84,7 @@ GRANT USAGE ON *.* TO foodieuser@localhost;
 SET SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 CREATE USER 'foodieuser'@'localhost' IDENTIFIED BY 'foodie';
 
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'foodieuser'@'localhost';
 GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'foodieuser'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
