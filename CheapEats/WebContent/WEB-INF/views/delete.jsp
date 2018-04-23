@@ -6,6 +6,7 @@
 <jsp:include page="head.jsp" />
 <body>
 	<jsp:include page="navbar.jsp" />
+	<a href="index.do"><button>Back to Home Page</button></a>
 	<h1>Restaurant Successfully Deleted</h1>
 	<jsp:include page="script.jsp" />
 </body>

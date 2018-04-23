@@ -12,43 +12,43 @@
 			<div class="form-group">
 				<label for="restaurantName">Restaurant Name</label> <input
 					type="text" class="form-control" name="name"
-					placeholder="Restaurant Name" />
+					value="Restaurant Name" />
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber">Restaurant Phone Number</label> <input
 					type="text" class="form-control" name=" phoneNumber"
-					placeholder="(720) 123-4567">
+					value="(720) 123-4567">
 			</div>
 			<div class="form-group">
 				<label for="address">Address</label> <input type="text"
-					class="form-control" name="address" placeholder="123 N Colorado St" />
+					class="form-control" name="address" value="123 N Colorado St" />
 			</div>
 			<div class="form-group">
 				<label for="address2">Suite/Floor </label> <input type="text"
-					class="form-control" name="address2" placeholder="#123" />
+					class="form-control" name="address2" value="#123" />
 			</div>
 			<div class="form-row">
 				<div class="col-7">
 					<input type="text" class="form-control" name="city"
-						placeholder="City">
+						value="City">
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" name="state"
-						placeholder="State">
+						value="State">
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" name="zipCode"
-						placeholder="Zip">
+						value="Zip">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="minItemPrice">Minimum price per item</label> <input
-					type="text" class="form-control" name="minPrice" placeholder="1.50" />
+					type="text" class="form-control" name="minPrice" value="1.50" />
 			</div>
 			<div class="form-group">
 				<label for="mxItemPrice">Maximum price per item</label> <input
 					type="text" class="form-control" name="maxPrice"
-					placeholder="10.00" />
+					value="10.00" />
 			</div>
 			<!-- <div class="form-group">
 			<label for="restaurantCategory">Category</label> 
@@ -80,13 +80,13 @@
 			</div>
 			<!-- <div class="form-group">
 			<label for="restaurantAddress">Address</label> <input type="text"
-				class="form-control" name="address" placeholder="123 Eats Street, Denver, CO, 80201"/>
+				class="form-control" name="address" value="123 Eats Street, Denver, CO, 80201"/>
 		</div> -->
 
 			<div class="form-group">
 				<label for="restaurantPhoto">Image URL</label> <input type="text"
 					class="form-control" name="imageUrl"
-					placeholder="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvMZHL0QP3Y67APUEfICt9DC-tXe3oUxGJAHO8xxyJlKJj-icTtA" />
+					value="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvMZHL0QP3Y67APUEfICt9DC-tXe3oUxGJAHO8xxyJlKJj-icTtA" />
 			</div>
 			<button type="submit" class="btn btn-block btn-outline-success">Add
 				Restaurant</button>

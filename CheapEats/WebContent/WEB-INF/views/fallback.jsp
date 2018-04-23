@@ -6,6 +6,7 @@
 <jsp:include page="head.jsp" />
 <body>
 	<jsp:include page="navbar.jsp" />
+	<a href="index.do"><button>Back to Home Page</button></a>
 	<h1>This Page Does Not Exist, Please Return to the Home Page</h1>
 	<jsp:include page="script.jsp" />
 </body>

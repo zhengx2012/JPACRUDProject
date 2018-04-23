@@ -106,8 +106,13 @@ public class EatsController {
 	@RequestMapping(path = "/delete.do", params = "id", method = RequestMethod.GET)
 	public ModelAndView deleteRestaurant(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView();
-		rDAO.delete(id);
-		mv.setViewName("redirect:deleted.do");
+		boolean deleted = rDAO.delete(id);
+		if (deleted) {
+			mv.setViewName("redirect:deleted.do");
+		}
+		else {
+			mv.setViewName("redirect:failure.do");
+		}
 		return mv;
 
 	}
