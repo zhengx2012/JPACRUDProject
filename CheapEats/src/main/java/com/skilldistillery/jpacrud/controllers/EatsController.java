@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.jpacrud.data.AddressDAO;
@@ -53,20 +54,19 @@ public class EatsController {
 	}
 
 	@RequestMapping(path = "/add.do", method = RequestMethod.POST)
-	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
-			int categoryId, String address, String address2, String city, String state, String zipCode,
-			String imageUrl) {
+	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice, int categoryId,
+			String address, String address2, String city, String state, String zipCode, String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state, city, zipCode, imageUrl);
+		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state,
+				city, zipCode, imageUrl);
 		Restaurant createdRest = rDAO.create(rest);
 		if (createdRest == rest) {
 			mv.addObject("restaurant", createdRest);
 			mv.setViewName("redirect:success.do");
-		}
-		else {
+		} else {
 			mv.setViewName("redirect:failure.do");
 		}
-		
+
 		return mv;
 	}
 
@@ -77,24 +77,40 @@ public class EatsController {
 	}
 
 	@RequestMapping(path = "/updated.do", method = RequestMethod.GET)
-	public ModelAndView updateRestaurant(String name, double minPrice, double maxPrice, Category category,
-			Address address, String imageUrl) {
+	public ModelAndView updateRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
+			int categoryId, String address, String address2, String city, String state, String zipCode,
+			String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant createdRest = new Restaurant();
-		mv.addObject("restaurant", createdRest);
-		mv.setViewName("redirect:WEB-INF/views/showRestaurant.jsp");
+		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state,
+				city, zipCode, imageUrl);
+		Restaurant updatedRest = rDAO.update(rest, rest.getId());
+		if (updatedRest == rest) {
+			mv.addObject("restaurant", updatedRest);
+			mv.setViewName("redirect:success.do");
+		} else {
+			mv.setViewName("redirect:failure.do");
+		}
 		return mv;
 	}
 
-	@RequestMapping(path = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(path = "/deleted.do", method = RequestMethod.GET)
 	public String showDeletePage() {
 		return "WEB-INF/views/delete.jsp";
 
 	}
+	@RequestMapping(path = "/delete.do", params = "id", method = RequestMethod.GET)
+	public ModelAndView deleteRestaurant(@RequestParam("id") int id) {
+		ModelAndView mv = new ModelAndView();
+		rDAO.delete(id);
+		mv.setViewName("redirect:deleted.do");
+		return mv;
+		
+	}
+
 	@RequestMapping(path = "/success.do", method = RequestMethod.GET)
 	public String showSuccessPage() {
 		return "WEB-INF/views/restaurantModifySuccess.jsp";
-		
+
 	}
 
 	@RequestMapping(path = "/failure.do", method = RequestMethod.GET)

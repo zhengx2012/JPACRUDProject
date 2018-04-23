@@ -47,7 +47,12 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		updatedRest.setImageUrl(restaurant.getImageUrl());
 		updatedRest.setMinPrice(restaurant.getMinPrice());
 		updatedRest.setMaxPrice(restaurant.getMaxPrice());
-		updatedRest.setCategory(restaurant.getCategory());
+		updatedRest.setAddress(restaurant.getAddress());
+		updatedRest.setAddress2(restaurant.getAddress2());
+		updatedRest.setCity(restaurant.getCity());
+		updatedRest.setState(restaurant.getState());
+		updatedRest.setZipCode(restaurant.getZipCode());
+		updatedRest.setCategoryId(restaurant.getCategoryId());
 		em.persist(updatedRest);
 		em.flush();
 		return updatedRest;
