@@ -73,11 +73,17 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public Restaurant retrieveById(int id) {
-		Restaurant res = em.find(Restaurant.class, id);
+		Restaurant res = null;
+	
+		try {
+		res = em.find(Restaurant.class, id);
 		String query = "SELECT c FROM Category c WHERE id =:id";
 		Category cat = (Category) em.createQuery(query, Category.class).setParameter("id", res.getCategoryId())
 				.getSingleResult();
 		res.setCategory(cat);
+		} catch (NullPointerException e) {
+			System.out.println("Not a valid id");
+		}
 		return res;
 	}
 

@@ -28,12 +28,16 @@ public class EatsController {
 	@RequestMapping(path = "/show.do", params = "rid", method = RequestMethod.GET)
 	public ModelAndView index(int rid) {
 		ModelAndView mv = new ModelAndView();
-		
-		Restaurant restaurant = rDAO.retrieveById(rid);
-		mv.addObject("restaurant", restaurant);
-		Category category = cDAO.retrieveCategory(restaurant.getCategoryId());
-		mv.addObject("category", category);
-		mv.setViewName("WEB-INF/views/showRestaurant.jsp");
+		try {
+			Restaurant restaurant = rDAO.retrieveById(rid);
+			mv.addObject("restaurant", restaurant);
+			Category category = cDAO.retrieveCategory(restaurant.getCategoryId());
+			mv.addObject("category", category);
+			mv.setViewName("WEB-INF/views/showRestaurant.jsp");
+
+		} catch (NullPointerException e) {
+			mv.setViewName("redirect:failure.do");
+		}
 		return mv;
 
 	}
@@ -74,17 +78,21 @@ public class EatsController {
 	@RequestMapping(path = "/update.do", method = RequestMethod.GET)
 	public ModelAndView showUpdatePage(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant restaurant = rDAO.retrieveById(id);
-		mv.addObject("restaurant", restaurant);
-		mv.setViewName("WEB-INF/views/update.jsp");
+		try {
+			Restaurant restaurant = rDAO.retrieveById(id);
+			mv.addObject("restaurant", restaurant);
+			mv.setViewName("WEB-INF/views/update.jsp");
+		} catch (NullPointerException e) {
+			mv.setViewName("redirect:failure.do");
+		}
 		return mv;
 
 	}
 
 	@RequestMapping(path = "/updating.do", method = RequestMethod.POST)
 	public ModelAndView updateRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
-			int categoryId, String address, String address2, String city, String state, String zipCode,
-			String imageUrl, int id) {
+			int categoryId, String address, String address2, String city, String state, String zipCode, String imageUrl,
+			int id) {
 		ModelAndView mv = new ModelAndView();
 		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state,
 				city, zipCode, imageUrl);
@@ -107,13 +115,15 @@ public class EatsController {
 	@RequestMapping(path = "/delete.do", params = "id", method = RequestMethod.GET)
 	public ModelAndView deleteRestaurant(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView();
-		boolean deleted = rDAO.delete(id);
-		if (deleted) {
+		try {
+			rDAO.delete(id);
 			mv.setViewName("redirect:deleted.do");
-		}
-		else {
+		} catch (IllegalStateException e) {
+			mv.setViewName("redirect:failure.do");
+		} catch (NullPointerException e) {
 			mv.setViewName("redirect:failure.do");
 		}
+
 		return mv;
 
 	}
@@ -126,7 +136,7 @@ public class EatsController {
 
 	@RequestMapping(path = "/failure.do", method = RequestMethod.GET)
 	public String showFailurePage() {
-		return "WEB-INF/views/restaurantModifySuccess.jsp";
+		return "WEB-INF/views/restaurantModifyFailed.jsp";
 
 	}
 
