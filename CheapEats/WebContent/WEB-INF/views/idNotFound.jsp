@@ -6,7 +6,7 @@
 <body>
 <jsp:include page="navbar.jsp" />
 <a href="index.do"><button>Back to Home Page</button></a>
-<h1 class="header">Restaurant Modification Failed</h1>
+<h1 class="header">ID Not Found</h1>
 
 <jsp:include page="script.jsp" />
 </body>

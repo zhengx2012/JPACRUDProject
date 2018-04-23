@@ -36,7 +36,7 @@ public class EatsController {
 			mv.setViewName("WEB-INF/views/showRestaurant.jsp");
 
 		} catch (NullPointerException e) {
-			mv.setViewName("redirect:failure.do");
+			mv.setViewName("redirect:notFound.do");
 		}
 		return mv;
 
@@ -83,7 +83,7 @@ public class EatsController {
 			mv.addObject("restaurant", restaurant);
 			mv.setViewName("WEB-INF/views/update.jsp");
 		} catch (NullPointerException e) {
-			mv.setViewName("redirect:failure.do");
+			mv.setViewName("redirect:notFound.do");
 		}
 		return mv;
 
@@ -119,9 +119,9 @@ public class EatsController {
 			rDAO.delete(id);
 			mv.setViewName("redirect:deleted.do");
 		} catch (IllegalStateException e) {
-			mv.setViewName("redirect:failure.do");
+			mv.setViewName("redirect:notFound.do");
 		} catch (NullPointerException e) {
-			mv.setViewName("redirect:failure.do");
+			mv.setViewName("redirect:notFound.do");
 		}
 
 		return mv;
@@ -138,6 +138,12 @@ public class EatsController {
 	public String showFailurePage() {
 		return "WEB-INF/views/restaurantModifyFailed.jsp";
 
+	}
+	
+	@RequestMapping(path = "/notFound.do", method = RequestMethod.GET)
+	public String showNotFound() {
+		return "WEB-INF/views/idNotFound.jsp";
+		
 	}
 
 	@RequestMapping(path = "*", method = RequestMethod.GET)
