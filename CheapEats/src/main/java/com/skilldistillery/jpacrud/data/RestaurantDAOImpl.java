@@ -21,23 +21,11 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public Restaurant create(Restaurant restaurant) {
-		Restaurant rest = new Restaurant();
-		rest.setName(restaurant.getName());
-		rest.setImageUrl(restaurant.getImageUrl());
-		rest.setMinPrice(restaurant.getMinPrice());
-		rest.setMaxPrice(restaurant.getMaxPrice());
-		rest.setAddress(restaurant.getAddress());
-		rest.setAddress2(restaurant.getAddress2());
-		rest.setCity(restaurant.getCity());
-		rest.setState(restaurant.getState());
-		rest.setZipCode(restaurant.getZipCode());
-		// rest.setCategory(restaurant.getCategory());
-		// rest.setAddressId(restaurant.getAddressId());
-		rest.setCategoryId(restaurant.getCategoryId());
-		em.persist(rest);
+//		restaurant.getCategory().setName(restaurant.getCategory().getName());
+		em.persist(restaurant);
 		em.flush();
 
-		return rest;
+		return restaurant;
 	}
 
 	@Override
@@ -52,7 +40,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		updatedRest.setCity(restaurant.getCity());
 		updatedRest.setState(restaurant.getState());
 		updatedRest.setZipCode(restaurant.getZipCode());
-		updatedRest.setCategoryId(restaurant.getCategoryId());
 		em.persist(updatedRest);
 		em.flush();
 		return updatedRest;
@@ -78,7 +65,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		try {
 		res = em.find(Restaurant.class, id);
 		String query = "SELECT c FROM Category c WHERE id =:id";
-		Category cat = (Category) em.createQuery(query, Category.class).setParameter("id", res.getCategoryId())
+		Category cat = (Category) em.createQuery(query, Category.class).setParameter("id", res.getCategory().getId())
 				.getSingleResult();
 		res.setCategory(cat);
 		} catch (NullPointerException e) {
@@ -96,7 +83,7 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 			for (Restaurant r : rests) {
 				Category category = (Category) em.createQuery(categoryQuery, Category.class)
-						.setParameter("catId", r.getCategoryId()).getSingleResult();
+						.setParameter("catId", r.getCategory().getId());
 				r.setCategory(category);
 			}
 		}

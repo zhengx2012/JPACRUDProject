@@ -31,8 +31,8 @@ public class EatsController {
 		try {
 			Restaurant restaurant = rDAO.retrieveById(rid);
 			mv.addObject("restaurant", restaurant);
-			Category category = cDAO.retrieveCategory(restaurant.getCategoryId());
-			mv.addObject("category", category);
+			// Category category = cDAO.retrieveCategory(restaurant.getCategory());
+			// mv.addObject("category", category);
 			mv.setViewName("WEB-INF/views/showRestaurant.jsp");
 
 		} catch (NullPointerException e) {
@@ -59,16 +59,18 @@ public class EatsController {
 	}
 
 	@RequestMapping(path = "/add.do", method = RequestMethod.POST)
-	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice, int categoryId,
-			String address, String address2, String city, String state, String zipCode, String imageUrl) {
+	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
+			Category category, String address, String address2, String city, String state, String zipCode,
+			String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state,
-				city, zipCode, imageUrl);
-		Restaurant createdRest = rDAO.create(rest);
-		if (createdRest == rest) {
+		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, category, imageUrl, address, address2,
+				city, state, zipCode);
+		category.getId();
+		try {
+			Restaurant createdRest = rDAO.create(rest);
 			mv.addObject("restaurant", createdRest);
 			mv.setViewName("redirect:success.do");
-		} else {
+		} catch (IllegalArgumentException e) {
 			mv.setViewName("redirect:failure.do");
 		}
 
@@ -91,8 +93,8 @@ public class EatsController {
 
 	@RequestMapping(path = "/updating.do", method = RequestMethod.POST)
 	public ModelAndView updateRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
-			int categoryId, String address, String address2, String city, String state, String zipCode, String imageUrl,
-			int id) {
+			Category categoryId, String address, String address2, String city, String state, String zipCode,
+			String imageUrl, int id) {
 		ModelAndView mv = new ModelAndView();
 		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state,
 				city, zipCode, imageUrl);
@@ -139,11 +141,11 @@ public class EatsController {
 		return "WEB-INF/views/restaurantModifyFailed.jsp";
 
 	}
-	
+
 	@RequestMapping(path = "/notFound.do", method = RequestMethod.GET)
 	public String showNotFound() {
 		return "WEB-INF/views/idNotFound.jsp";
-		
+
 	}
 
 	@RequestMapping(path = "*", method = RequestMethod.GET)

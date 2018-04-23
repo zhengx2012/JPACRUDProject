@@ -66,15 +66,15 @@
 			<div class="form-group">
 				<label for="restaurantCategory">Category</label> <select
 					class="form-control" name="categoryId">
-					<option placeholder="1">East Asian</option>
-					<option placeholder="2">Indian</option>
-					<option placeholder="3">Asian Fusion</option>
-					<option placeholder="4">American</option>
-					<option placeholder="5">Soul</option>
-					<option placeholder="6">BBQ</option>
-					<option placeholder="7">Latin</option>
-					<option placeholder="8">Pizzeria</option>
-					<option placeholder="9">Other</option>
+					<option value="1">East Asian</option>
+					<option value="2">Indian</option>
+					<option value="3">Asian Fusion</option>
+					<option value="4">American</option>
+					<option value="5">Soul</option>
+					<option value="6">BBQ</option>
+					<option value="7">Latin</option>
+					<option value="8">Pizzeria</option>
+					<option value="9">Other</option>
 				</select>
 
 			</div>

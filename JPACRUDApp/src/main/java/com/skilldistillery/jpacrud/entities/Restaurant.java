@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -24,10 +26,8 @@ public class Restaurant {
 	@Column(name = "max_price")
 	private double maxPrice;
 
-	@Column(name = "category_id")
-	private int categoryId;
-
-	@Transient
+	@OneToOne
+	@JoinColumn(name = "category_id")
 	private Category category;
 
 	// @Column(name = "address_id")
@@ -36,32 +36,31 @@ public class Restaurant {
 	// @Transient
 	// private Address address;
 
+	@Column(name = "image_url")
+	private String imageUrl;
+
 	private String address;
 
 	private String address2;
 
-	private String state;
-
 	private String city;
+
+	private String state;
 
 	@Column(name = "zip_code")
 	private String zipCode;
-
-	@Column(name = "image_url")
-	private String imageUrl;
 
 	public Restaurant() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Restaurant(String name, String phoneNumber, double minPrice, double maxPrice, int categoryId, String address,
+	public Restaurant(String name, String phoneNumber, double minPrice, double maxPrice, String address,
 			String address2, String state, String city, String zipCode, String imageUrl) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.minPrice = minPrice;
 		this.maxPrice = maxPrice;
-		this.categoryId = categoryId;
 		this.address = address;
 		this.address2 = address2;
 		this.state = state;
@@ -70,28 +69,14 @@ public class Restaurant {
 		this.imageUrl = imageUrl;
 	}
 
-	public Restaurant(String name, String phoneNumber, double minPrice, double maxPrice, int categoryId,
-			String imageUrl) {
+	public Restaurant(String name, String phoneNumber, double minPrice, double maxPrice, String imageUrl) {
 		super();
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		this.minPrice = minPrice;
 		this.maxPrice = maxPrice;
-		this.categoryId = categoryId;
 		this.imageUrl = imageUrl;
 	}
-
-	// public Restaurant(String name, double minPrice, double maxPrice, Category
-	// category, Address address,
-	// String imageUrl) {
-	// super();
-	// this.name = name;
-	// this.minPrice = minPrice;
-	// this.maxPrice = maxPrice;
-	// this.category = category;
-	// this.address = address;
-	// this.imageUrl = imageUrl;
-	// }
 
 	public Restaurant(String name, double minPrice, double maxPrice, String imageUrl) {
 		super();
@@ -99,6 +84,23 @@ public class Restaurant {
 		this.minPrice = minPrice;
 		this.maxPrice = maxPrice;
 		this.imageUrl = imageUrl;
+	}
+	
+
+	public Restaurant(String name, String phoneNumber, double minPrice, double maxPrice, Category category,
+			String imageUrl, String address, String address2, String city, String state, String zipCode) {
+		super();
+		this.name = name;
+		this.phoneNumber = phoneNumber;
+		this.minPrice = minPrice;
+		this.maxPrice = maxPrice;
+		this.category = category;
+		this.imageUrl = imageUrl;
+		this.address = address;
+		this.address2 = address2;
+		this.city = city;
+		this.state = state;
+		this.zipCode = zipCode;
 	}
 
 	public String getName() {
@@ -132,22 +134,6 @@ public class Restaurant {
 	public void setMaxPrice(double maxPrice) {
 		this.maxPrice = maxPrice;
 	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	// public int getAddressId() {
-	// return addressId;
-	// }
-	//
-	// public void setAddressId(Integer addressId) {
-	// this.addressId = addressId;
-	// }
 
 	public int getId() {
 		return id;
@@ -223,8 +209,7 @@ public class Restaurant {
 		builder.append("Restaurants ").append("\nName:").append(name).append("Phone Number: ").append(phoneNumber)
 				.append("Address: ").append(address).append(" ").append(address2).append(", ").append(city).append(", ")
 				.append(state).append(", ").append(zipCode).append(", Minimum Price: $").append(minPrice)
-				.append(", Minimum Price: $").append(maxPrice).append(", Category ID: ").append(categoryId)
-				.append(", Image: ").append(imageUrl);
+				.append(", Minimum Price: $").append(maxPrice).append(", Image: ").append(imageUrl);
 		return builder.toString();
 	}
 
