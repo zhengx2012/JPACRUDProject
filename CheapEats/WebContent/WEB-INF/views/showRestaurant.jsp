@@ -28,7 +28,7 @@
 		</form>
 	</div>
 	<div class="form-group">
-		<form action="delete.do">
+		<form action="update.do">
 			<label>Input the ID of the restaurant you would like to
 				update</label> <input type="text" name="id" />
 			<button type="submit" class="btn btn-outline-primary">Update</button>

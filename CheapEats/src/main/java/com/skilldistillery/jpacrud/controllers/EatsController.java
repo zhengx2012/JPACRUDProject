@@ -71,19 +71,23 @@ public class EatsController {
 	}
 
 	@RequestMapping(path = "/update.do", method = RequestMethod.GET)
-	public String showUpdatePage() {
-		return "WEB-INF/views/update.jsp";
+	public ModelAndView showUpdatePage(@RequestParam("id") int id) {
+		ModelAndView mv = new ModelAndView();
+		Restaurant restaurant = rDAO.retrieveById(id);
+		mv.addObject("restaurant", restaurant);
+		mv.setViewName("WEB-INF/views/update.jsp");
+		return mv;
 
 	}
 
-	@RequestMapping(path = "/updated.do", method = RequestMethod.GET)
+	@RequestMapping(path = "/updating.do", method = RequestMethod.POST)
 	public ModelAndView updateRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
 			int categoryId, String address, String address2, String city, String state, String zipCode,
-			String imageUrl) {
+			String imageUrl, int id) {
 		ModelAndView mv = new ModelAndView();
 		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state,
 				city, zipCode, imageUrl);
-		Restaurant updatedRest = rDAO.update(rest, rest.getId());
+		Restaurant updatedRest = rDAO.update(rest, id);
 		if (updatedRest == rest) {
 			mv.addObject("restaurant", updatedRest);
 			mv.setViewName("redirect:success.do");
