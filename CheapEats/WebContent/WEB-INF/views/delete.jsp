@@ -6,9 +6,7 @@
 <jsp:include page="head.jsp" />
 <body>
 	<jsp:include page="navbar.jsp" />
-	<form action="delete.do"></form>
-
-
+	<h1>Restaurant Successfully Deleted</h1>
 	<jsp:include page="script.jsp" />
 </body>
 </html>

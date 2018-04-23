@@ -27,12 +27,10 @@ public class EatsController {
 	@RequestMapping(path = "/show.do", params = "rid", method = RequestMethod.GET)
 	public ModelAndView index(int rid) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant res = rDAO.retrieveById(rid);
-		mv.addObject("restaurant", res);
-		Address add = aDAO.retrieveById(res.getAddressId());
-		mv.addObject("address", add);
-		Category cat = cDAO.retrieveCategory(res.getCategoryId());
-		mv.addObject("category", cat);
+		Restaurant restaurant = rDAO.retrieveById(rid);
+		mv.addObject("restaurant", restaurant);
+		Category category = cDAO.retrieveCategory(restaurant.getCategoryId());
+		mv.addObject("category", category);
 		mv.setViewName("WEB-INF/views/showRestaurant.jsp");
 		return mv;
 
@@ -56,10 +54,10 @@ public class EatsController {
 
 	@RequestMapping(path = "/add.do", method = RequestMethod.POST)
 	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
-			int categoryId, /* Category category, Address address, */
+			int categoryId, String address, String address2, String city, String state, String zipCode,
 			String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, imageUrl);
+		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state, city, zipCode, imageUrl);
 		Restaurant createdRest = rDAO.create(rest);
 		if (createdRest == rest) {
 			mv.addObject("restaurant", createdRest);
@@ -82,7 +80,7 @@ public class EatsController {
 	public ModelAndView updateRestaurant(String name, double minPrice, double maxPrice, Category category,
 			Address address, String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant createdRest = new Restaurant(name, minPrice, maxPrice, category, address, imageUrl);
+		Restaurant createdRest = new Restaurant();
 		mv.addObject("restaurant", createdRest);
 		mv.setViewName("redirect:WEB-INF/views/showRestaurant.jsp");
 		return mv;

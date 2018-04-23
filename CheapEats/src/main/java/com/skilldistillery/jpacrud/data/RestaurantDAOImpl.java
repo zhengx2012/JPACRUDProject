@@ -26,9 +26,13 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		rest.setImageUrl(restaurant.getImageUrl());
 		rest.setMinPrice(restaurant.getMinPrice());
 		rest.setMaxPrice(restaurant.getMaxPrice());
-//		rest.setAddress(restaurant.getAddress());
-//		rest.setCategory(restaurant.getCategory());
-//		rest.setAddressId(restaurant.getAddressId());
+		rest.setAddress(restaurant.getAddress());
+		rest.setAddress2(restaurant.getAddress2());
+		rest.setCity(restaurant.getCity());
+		rest.setState(restaurant.getState());
+		rest.setZipCode(restaurant.getZipCode());
+		// rest.setCategory(restaurant.getCategory());
+		// rest.setAddressId(restaurant.getAddressId());
 		rest.setCategoryId(restaurant.getCategoryId());
 		em.persist(rest);
 		em.flush();
@@ -75,22 +79,39 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	@Override
 	public List<Restaurant> retrieveAll() {
 		String query = "SELECT r FROM Restaurant r";
-		String categoryQuery = "SELECT c FROM Category c WHERE id =:catid";
-		String addressQuery = "SELECT a FROM Address a WHERE id =:addid";
+		String categoryQuery = "SELECT c FROM Category c WHERE id =:catId";
 		List<Restaurant> rests = em.createQuery(query, Restaurant.class).getResultList();
 		if (rests != null) {
 
 			for (Restaurant r : rests) {
 				Category category = (Category) em.createQuery(categoryQuery, Category.class)
-						.setParameter("catid", r.getCategoryId()).getSingleResult();
+						.setParameter("catId", r.getCategoryId()).getSingleResult();
 				r.setCategory(category);
-
-				Address address = (Address) em.createQuery(addressQuery, Address.class)
-						.setParameter("addid", r.getAddressId()).getSingleResult();
-				r.setAddress(address);
 			}
 		}
 		return rests;
 	}
+
+	// @Override
+	// public List<Restaurant> retrieveAll() {
+	// String query = "SELECT r FROM Restaurant r";
+	// String categoryQuery = "SELECT c FROM Category c WHERE id =:catid";
+	// String addressQuery = "SELECT a FROM Address a WHERE id =:addid";
+	// List<Restaurant> rests = em.createQuery(query,
+	// Restaurant.class).getResultList();
+	// if (rests != null) {
+	//
+	// for (Restaurant r : rests) {
+	// Category category = (Category) em.createQuery(categoryQuery, Category.class)
+	// .setParameter("categoryId", r.getCategoryId()).getSingleResult();
+	// r.setCategory(category);
+	//
+	// Address address = (Address) em.createQuery(addressQuery, Address.class)
+	// .setParameter("addressId", r.getAddressId()).getSingleResult();
+	// r.setAddress(address);
+	// }
+	// }
+	// return rests;
+	// }
 
 }

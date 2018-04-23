@@ -13,12 +13,23 @@ img.restarant-photo {
 	padding: 20px;
 }
 
-
-div.head { 
+div.head {
 	scroll-behavior: inherit;
 	/* position: fixed; */
 	top: 0px;
 	width: 100%;
 	background-color: darkseagreen;
+	text-align: center;
+}
+
+.container {
+	padding-right: 0px;
+	padding-left: 0px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.header {
+	width: 100%;
 	text-align: center;
 }
