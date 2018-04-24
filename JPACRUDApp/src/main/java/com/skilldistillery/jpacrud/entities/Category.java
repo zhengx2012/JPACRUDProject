@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Category {
@@ -15,6 +16,7 @@ public class Category {
 	
 	@Column(name = "category_name")
 	private String categoryName;
+	
 	
 	public Category() {
 	}

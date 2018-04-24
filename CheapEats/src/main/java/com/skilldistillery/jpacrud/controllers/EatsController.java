@@ -65,8 +65,8 @@ public class EatsController {
 		ModelAndView mv = new ModelAndView();
 		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, category, imageUrl, address, address2,
 				city, state, zipCode);
-		category.getId();
 		try {
+			category.getName();
 			Restaurant createdRest = rDAO.create(rest);
 			mv.addObject("restaurant", createdRest);
 			mv.setViewName("redirect:success.do");

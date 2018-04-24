@@ -77,15 +77,15 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	@Override
 	public List<Restaurant> retrieveAll() {
 		String query = "SELECT r FROM Restaurant r";
-		String categoryQuery = "SELECT c FROM Category c WHERE id =:catId";
+//		String categoryQuery = "SELECT c FROM Category c WHERE id =:catId";
 		List<Restaurant> rests = em.createQuery(query, Restaurant.class).getResultList();
 		if (rests != null) {
 
-			for (Restaurant r : rests) {
-				Category category = (Category) em.createQuery(categoryQuery, Category.class)
-						.setParameter("catId", r.getCategory().getId());
-				r.setCategory(category);
-			}
+//			for (Restaurant r : rests) {
+//				Category category = (Category) em.createQuery(categoryQuery, Category.class)
+//						.setParameter("catId", r.getCategory().getId());
+//				r.setCategory(category);
+//			}
 		}
 		return rests;
 	}

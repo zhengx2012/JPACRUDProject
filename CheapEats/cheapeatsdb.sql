@@ -90,3 +90,31 @@ GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'foodieuser'@'localh
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+-- -----------------------------------------------------
+-- Data for table `category`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cheapeatsdb`;
+INSERT INTO `category` (`id`, `category_name`) VALUES (1, 'East Asian');
+INSERT INTO `category` (`id`, `category_name`) VALUES (2, 'Indian');
+INSERT INTO `category` (`id`, `category_name`) VALUES (3, 'Asian Fusion');
+INSERT INTO `category` (`id`, `category_name`) VALUES (4, 'American');
+INSERT INTO `category` (`id`, `category_name`) VALUES (5, 'Soul');
+INSERT INTO `category` (`id`, `category_name`) VALUES (6, 'BBQ');
+INSERT INTO `category` (`id`, `category_name`) VALUES (7, 'Latin');
+INSERT INTO `category` (`id`, `category_name`) VALUES (8, 'Pizzeria');
+INSERT INTO `category` (`id`, `category_name`) VALUES (9, 'Other');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `restaurant`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `cheapeatsdb`;
+INSERT INTO `restaurant` (`id`, `name`, `phone_number`, `min_price`, `max_price`, `image_url`, `category_id`, `address`, `address2`, `city`, `state`, `zip_code`) VALUES (1, 'Lazo Empanadas', '(303) 296-6710', 1.50, 5.50, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcYQIpygWNZDIGj32_erZ-E6dKcsMLR3fIbMwTboYEg4z3vKA0', 7, '1319 22nd St', NULL, 'Denver', 'CO', '80205');
+
+COMMIT;
+
