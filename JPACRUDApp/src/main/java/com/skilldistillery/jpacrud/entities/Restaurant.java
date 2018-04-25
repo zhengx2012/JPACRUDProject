@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
@@ -27,9 +28,9 @@ public class Restaurant {
 	@Column(name = "max_price")
 	private double maxPrice;
 
-//	@OneToOne
-//	@JoinColumn(name = "category_id")
-	@Transient
+	@ManyToOne
+	@JoinColumn(name = "category_id")
+//	@Transient
 	private Category category;
 
 	// @Column(name = "address_id")
