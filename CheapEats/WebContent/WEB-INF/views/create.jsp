@@ -65,7 +65,7 @@
 			</select> -->
 			<div class="form-group">
 				<label for="restaurantCategory">Category</label> <select
-					class="form-control" name="categoryId">
+					class="form-control" name="category">
 					<option value="1">East Asian</option>
 					<option value="2">Indian</option>
 					<option value="3">Asian Fusion</option>

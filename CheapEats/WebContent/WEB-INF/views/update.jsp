@@ -44,7 +44,7 @@
 				</div>
 				<div class="col">
 					<input type="text" class="form-control" name="zipCode"
-						value="${restaurant.zipCode }">
+						value="${restaurant.zipCode}">
 				</div>
 			</div>
 			<div class="form-group">

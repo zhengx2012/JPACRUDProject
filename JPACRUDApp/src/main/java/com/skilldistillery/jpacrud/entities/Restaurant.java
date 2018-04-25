@@ -1,5 +1,6 @@
 package com.skilldistillery.jpacrud.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,9 +29,9 @@ public class Restaurant {
 	@Column(name = "max_price")
 	private double maxPrice;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name = "category_id")
-//	@Transient
+	// @Transient
 	private Category category;
 
 	// @Column(name = "address_id")
@@ -88,7 +89,6 @@ public class Restaurant {
 		this.maxPrice = maxPrice;
 		this.imageUrl = imageUrl;
 	}
-	
 
 	public Restaurant(String name, String phoneNumber, double minPrice, double maxPrice, Category category,
 			String imageUrl, String address, String address2, String city, String state, String zipCode) {
@@ -205,7 +205,6 @@ public class Restaurant {
 	// public void setAddress(Address address) {
 	// this.address = address;
 	// }
-	
 
 	@Override
 	public String toString() {

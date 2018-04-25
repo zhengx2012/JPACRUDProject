@@ -93,16 +93,17 @@ public class EatsController {
 
 	@RequestMapping(path = "/updating.do", method = RequestMethod.POST)
 	public ModelAndView updateRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
-			Category categoryId, String address, String address2, String city, String state, String zipCode,
+			Category category, String address, String address2, String city, String state, String zipCode,
 			String imageUrl, int id) {
+	
 		ModelAndView mv = new ModelAndView();
-		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, address, address2, state,
-				city, zipCode, imageUrl);
+		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, category, imageUrl, address, address2, city,
+				state, zipCode);
 		Restaurant updatedRest = rDAO.update(rest, id);
-		if (updatedRest == rest) {
+		try {
 			mv.addObject("restaurant", updatedRest);
 			mv.setViewName("redirect:success.do");
-		} else {
+		} catch(IllegalArgumentException e) {
 			mv.setViewName("redirect:failure.do");
 		}
 		return mv;

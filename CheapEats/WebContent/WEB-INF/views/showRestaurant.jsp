@@ -13,7 +13,6 @@
 			<h2>${restaurant.name }</h2>
 			<img class="restaurant-photo-lg" alt="${restaurant.name } Food Photo"
 				src="${restaurant.imageUrl }">
-			<p>Restaurant ID: ${restaurant.id }</p>
 			<p>Phone Number: ${restaurant.phoneNumber }</p>
 			<p>Address: ${restaurant.address } ${restaurant.address2 },
 				${restaurant.city }, ${restaurant.state }, ${restaurant.zipCode }</p>
