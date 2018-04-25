@@ -1,6 +1,5 @@
 @charset "UTF-8";
 
-
 img.restaurant-photo {
 	height: 300px;
 	width: 400px;
@@ -35,4 +34,8 @@ div.head {
 .header {
 	width: 100%;
 	text-align: center;
+}
+
+* {
+	box-sizing: border-box;
 }

@@ -2,6 +2,7 @@ package com.skilldistillery.jpacrud.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,8 +27,9 @@ public class Restaurant {
 	@Column(name = "max_price")
 	private double maxPrice;
 
-	@OneToOne
-	@JoinColumn(name = "category_id")
+//	@OneToOne
+//	@JoinColumn(name = "category_id")
+	@Transient
 	private Category category;
 
 	// @Column(name = "address_id")

@@ -9,7 +9,7 @@
 	<jsp:include page="navbar.jsp" />
 	<div class="container">
 		<c:if test="${not empty restaurant }">
-		<h2 class="header">Restaurant Details</h2>
+			<h2 class="header">Restaurant Details</h2>
 			<h2>${restaurant.name }</h2>
 			<img class="restaurant-photo-lg" alt="${restaurant.name } Food Photo"
 				src="${restaurant.imageUrl }">
@@ -23,16 +23,20 @@
 		</c:if>
 		<div class="form-group">
 			<form action="update.do">
-				<label>Input the ID of the restaurant you would like to
-					update</label> <input type="text" name="id" />
+				<!-- <label>Input the ID of the restaurant you would like to
+					update</label>  -->
+				<input type="hidden" name="id" value="${restaurant.id }" />
 				<button type="submit" class="btn btn-outline-primary">Update</button>
 			</form>
 		</div>
 		<div class="form-group">
 			<form action="delete.do">
-				<label>Input the ID of the restaurant you would like to
-					delete</label> <input type="text" name="id" />
-				<button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to delete this restaurant?')">Delete</button>
+				<!-- <label>Input the ID of the restaurant you would like to
+					delete</label> -->
+				<input type="hidden" name="id" value="${restaurant.id }" />
+				<button type="submit" class="btn btn-outline-danger"
+					onclick=" return confirm('Are you sure you
+					want to delete thisrestaurant?')">Delete</button>
 			</form>
 		</div>
 		<c:if test="${empty restaurant.id }">No Restaurants Found</c:if>

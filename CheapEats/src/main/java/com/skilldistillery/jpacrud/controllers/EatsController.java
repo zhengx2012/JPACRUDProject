@@ -60,13 +60,13 @@ public class EatsController {
 
 	@RequestMapping(path = "/add.do", method = RequestMethod.POST)
 	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
-			Category category, String address, String address2, String city, String state, String zipCode,
+			Category categoryId, String address, String address2, String city, String state, String zipCode,
 			String imageUrl) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, category, imageUrl, address, address2,
+		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, imageUrl, address, address2,
 				city, state, zipCode);
 		try {
-			category.getName();
+			categoryId.getName();
 			Restaurant createdRest = rDAO.create(rest);
 			mv.addObject("restaurant", createdRest);
 			mv.setViewName("redirect:success.do");
@@ -108,12 +108,6 @@ public class EatsController {
 		return mv;
 	}
 
-	@RequestMapping(path = "/deleted.do", method = RequestMethod.GET)
-	public String showDeletePage() {
-		return "WEB-INF/views/delete.jsp";
-
-	}
-
 	@RequestMapping(path = "/delete.do", params = "id", method = RequestMethod.GET)
 	public ModelAndView deleteRestaurant(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView();
@@ -127,6 +121,12 @@ public class EatsController {
 		}
 
 		return mv;
+
+	}
+
+	@RequestMapping(path = "/deleted.do", method = RequestMethod.GET)
+	public String showDeletePage() {
+		return "WEB-INF/views/delete.jsp";
 
 	}
 

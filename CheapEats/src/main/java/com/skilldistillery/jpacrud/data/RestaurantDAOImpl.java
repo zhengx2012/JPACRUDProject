@@ -21,7 +21,8 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 
 	@Override
 	public Restaurant create(Restaurant restaurant) {
-//		restaurant.getCategory().setName(restaurant.getCategory().getName());
+		Category category = em.find(Category.class, restaurant.getCategory().getId());
+		restaurant.setCategory(category);
 		em.persist(restaurant);
 		em.flush();
 
