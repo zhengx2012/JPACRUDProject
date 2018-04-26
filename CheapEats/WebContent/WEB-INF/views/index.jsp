@@ -13,7 +13,7 @@
 		<c:if test="${empty restaurants }">No restaurants in database</c:if>
 		<c:forEach var="r" items="${restaurants}">
 			<div class="restaurants">
-				<h3>
+				<h3 class="header">
 					<a href="show.do?rid=${r.id }"> ${r.name } </a>
 				</h3>
 

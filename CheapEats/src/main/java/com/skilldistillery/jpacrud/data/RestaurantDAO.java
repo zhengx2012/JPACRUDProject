@@ -2,6 +2,7 @@ package com.skilldistillery.jpacrud.data;
 
 import java.util.List;
 
+import com.skilldistillery.jpacrud.entities.Category;
 import com.skilldistillery.jpacrud.entities.Restaurant;
 
 public interface RestaurantDAO {
@@ -10,5 +11,6 @@ public interface RestaurantDAO {
 	List<Restaurant> retrieveAll();
 	Restaurant update(Restaurant restaurant, int id);
 	boolean delete(int id);
+	Category getCategoryById(int categoryId);
 	
 }

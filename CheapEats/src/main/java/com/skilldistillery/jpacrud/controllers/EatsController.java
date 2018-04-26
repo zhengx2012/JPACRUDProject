@@ -59,14 +59,15 @@ public class EatsController {
 	}
 
 	@RequestMapping(path = "/add.do", method = RequestMethod.POST)
-	public ModelAndView addRestaurant(String name, String phoneNumber, double minPrice, double maxPrice,
-			Category categoryId, String address, String address2, String city, String state, String zipCode,
-			String imageUrl) {
+	public ModelAndView addRestaurant(Restaurant rest, @RequestParam("categoryId") int categoryId) {
 		ModelAndView mv = new ModelAndView();
-		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, categoryId, imageUrl, address, address2,
-				city, state, zipCode);
+//		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, category, imageUrl, address, address2,
+//				city, state, zipCode);
+		System.out.println("**************************");
+		System.out.println(rest);
+		System.out.println("**************************");
 		try {
-			categoryId.getName();
+			rest.setCategory(rDAO.getCategoryById(categoryId));
 			Restaurant createdRest = rDAO.create(rest);
 			mv.addObject("restaurant", createdRest);
 			mv.setViewName("redirect:success.do");

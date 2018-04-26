@@ -22,6 +22,9 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	@Override
 	public Restaurant create(Restaurant restaurant) {
 		Category category = em.find(Category.class, restaurant.getCategory().getId());
+		System.out.println("******************************");
+		System.out.println(category);
+		System.out.println("m******************************");
 		restaurant.setCategory(category);
 		em.persist(restaurant);
 		em.flush();
@@ -88,6 +91,13 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 			// }
 		}
 		return rests;
+	}
+
+	@Override
+	public Category getCategoryById(int categoryId) {
+
+		Category category = em.find(Category.class, categoryId);
+		return category;
 	}
 
 	// @Override

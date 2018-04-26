@@ -57,7 +57,7 @@
 				<option>Indian</option>
 				<option>Asian Fusion</option>
 				<option>American</option>
-				<option>Soul</option>
+				<option>Soul</option>m
 				<option>BBQ</option>
 				<option>Latin</option>
 				<option>Pizzeria</option>
@@ -65,7 +65,7 @@
 			</select> -->
 			<div class="form-group">
 				<label for="restaurantCategory">Category</label> <select
-					class="form-control" name="category">
+					class="form-control" name="categoryId">
 					<option value="1">East Asian</option>
 					<option value="2">Indian</option>
 					<option value="3">Asian Fusion</option>
