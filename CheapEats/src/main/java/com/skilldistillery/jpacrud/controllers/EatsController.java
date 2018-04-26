@@ -61,11 +61,6 @@ public class EatsController {
 	@RequestMapping(path = "/add.do", method = RequestMethod.POST)
 	public ModelAndView addRestaurant(Restaurant rest, @RequestParam("categoryId") int categoryId) {
 		ModelAndView mv = new ModelAndView();
-//		Restaurant rest = new Restaurant(name, phoneNumber, minPrice, maxPrice, category, imageUrl, address, address2,
-//				city, state, zipCode);
-		System.out.println("**************************");
-		System.out.println(rest);
-		System.out.println("**************************");
 		try {
 			rest.setCategory(rDAO.getCategoryById(categoryId));
 			Restaurant createdRest = rDAO.create(rest);

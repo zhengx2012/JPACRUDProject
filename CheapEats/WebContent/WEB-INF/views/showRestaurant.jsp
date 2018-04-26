@@ -34,8 +34,7 @@
 					delete</label> -->
 				<input type="hidden" name="id" value="${restaurant.id }" />
 				<button type="submit" class="btn btn-outline-danger"
-					onclick=" return confirm('Are you sure you
-					want to delete thisrestaurant?')">Delete</button>
+					onclick=" return confirm('Are you sure you want to delete thisrestaurant?')">Delete</button>
 			</form>
 		</div>
 		<c:if test="${empty restaurant.id }">No Restaurants Found</c:if>
