@@ -20,10 +20,6 @@ import com.skilldistillery.jpacrud.entities.Restaurant;
 public class EatsController {
 	@Autowired
 	private RestaurantDAO rDAO;
-	@Autowired
-	private AddressDAO aDAO;
-	@Autowired
-	private CategoryDAO cDAO;
 
 	@RequestMapping(path = "/show.do", params = "rid", method = RequestMethod.GET)
 	public ModelAndView index(int rid) {
@@ -31,8 +27,6 @@ public class EatsController {
 		try {
 			Restaurant restaurant = rDAO.retrieveById(rid);
 			mv.addObject("restaurant", restaurant);
-			// Category category = cDAO.retrieveCategory(restaurant.getCategory());
-			// mv.addObject("category", category);
 			mv.setViewName("WEB-INF/views/showRestaurant.jsp");
 
 		} catch (NullPointerException e) {

@@ -22,9 +22,6 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 	@Override
 	public Restaurant create(Restaurant restaurant) {
 		Category category = em.find(Category.class, restaurant.getCategory().getId());
-		System.out.println("******************************");
-		System.out.println(category);
-		System.out.println("m******************************");
 		restaurant.setCategory(category);
 		em.persist(restaurant);
 		em.flush();
@@ -82,14 +79,14 @@ public class RestaurantDAOImpl implements RestaurantDAO {
 		String query = "SELECT r FROM Restaurant r";
 		// String categoryQuery = "SELECT c FROM Category c WHERE id =:catId";
 		List<Restaurant> rests = em.createQuery(query, Restaurant.class).getResultList();
-		if (rests != null) {
-
-			// for (Restaurant r : rests) {
-			// Category category = (Category) em.createQuery(categoryQuery, Category.class)
-			// .setParameter("catId", r.getCategory().getId());
-			// r.setCategory(category);
-			// }
-		}
+//		if (rests != null) {
+//
+//			 for (Restaurant r : rests) {
+//			 Category category = (Category) em.createQuery(categoryQuery, Category.class)
+//			 .setParameter("catId", r.getCategory().getId());
+//			 r.setCategory(category);
+//			 }
+//		}
 		return rests;
 	}
 
