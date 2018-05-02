@@ -7,18 +7,17 @@
 <body>
 	<jsp:include page="navbar.jsp" />
 
-	<h2 class="header">Add a new Cheap Eats Restaurant!</h2>
+	<h2 class="header">Edit ${restaurant.name }</h2>
 	<div class="container">
 		<form action="updating.do" method="POST">
 			<div class="form-group">
 				<label for="restaurantName">Restaurant Name</label> <input
 					type="text" class="form-control" name="name"
-					value="${restaurant.name }"/>
+					value="${restaurant.name }" />
 			</div>
 			<div class="form-group">
-				<label for="id"></label> <input
-					type="hidden" class="form-control" name="id"
-					value="${restaurant.id }"/>
+				<label for="id"></label> <input type="hidden" class="form-control"
+					name="id" value="${restaurant.id }" />
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber">Restaurant Phone Number</label> <input
@@ -31,7 +30,8 @@
 			</div>
 			<div class="form-group">
 				<label for="address2">Suite/Floor </label> <input type="text"
-					class="form-control" name="address2" value="${restaurant.address2 }" />
+					class="form-control" name="address2"
+					value="${restaurant.address2 }" />
 			</div>
 			<div class="form-row">
 				<div class="col-7">
@@ -49,7 +49,8 @@
 			</div>
 			<div class="form-group">
 				<label for="minItemPrice">Minimum price per item</label> <input
-					type="text" class="form-control" name="minPrice" value="${restaurant.minPrice }" />
+					type="text" class="form-control" name="minPrice"
+					value="${restaurant.minPrice }" />
 			</div>
 			<div class="form-group">
 				<label for="mxItemPrice">Maximum price per item</label> <input
